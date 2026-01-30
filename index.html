@@ -1,588 +1,188 @@
-<!doctype html>
-<html lang="zh-Hans">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ModuBrix · Space | One-Stop Interior Fit-Out Integration</title>
-  <meta name="description" content="ModuBrix · Space 提供一站式内装集成交付：范围、材料、工序、接口与现场管理系统化整合，让预算、工期与质量更可控。" />
-  <meta name="theme-color" content="#0FB9B1" />
-
+  <meta charset="UTF-8">
+  <title>ModuBrix · Space</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    :root{
-      /* 名片风格：青色 + gunmetal */
-      --teal:#0FB9B1;
-      --gun:#2C333A;
-      --bg:#0B0F12;
-      --card:#10161B;
-      --text:#E9EEF3;
-      --muted:#9AA4AF;
-      --line:rgba(255,255,255,.08);
-      --shadow: 0 18px 55px rgba(0,0,0,.45);
-      --radius: 18px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background:#0e1114;
+      color:#eaeaea;
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
-      background:
-        radial-gradient(1200px 650px at 12% -10%, rgba(15,185,177,.22), transparent 55%),
-        radial-gradient(900px 540px at 92% 10%, rgba(15,185,177,.10), transparent 60%),
-        linear-gradient(180deg, #06080a, var(--bg));
-      color:var(--text);
-      overflow-x:hidden;
-    }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1120px;margin:0 auto;padding:22px}
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(8,10,12,.70);
-      border-bottom:1px solid var(--line);
-    }
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:14px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}
-    .logo{
-      width:42px;height:42px;border-radius:16px;
-      background: linear-gradient(135deg, rgba(15,185,177,.95), rgba(15,185,177,.22));
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow: 0 12px 30px rgba(15,185,177,.18);
-    }
-    .brand small{display:block;color:var(--muted);font-weight:650;letter-spacing:.2px}
-    .nav-links{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .pill{
-      padding:10px 12px;border-radius:999px;border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      color:var(--text); font-weight:700; font-size:14px;
-      transition: .18s ease;
-    }
-    .pill:hover{transform: translateY(-1px); border-color: rgba(15,185,177,.35)}
-    .cta{
-      padding:10px 14px;border-radius:999px;
-      background: linear-gradient(135deg, rgba(15,185,177,1), rgba(15,185,177,.55));
-      color:#061012;font-weight:900;border:0;
-      box-shadow: 0 14px 32px rgba(15,185,177,.22);
-      cursor:pointer;
-      transition:.18s ease;
-    }
-    .cta:hover{filter:brightness(1.06); transform: translateY(-1px)}
-    .toggle{
-      padding:8px 10px;border-radius:999px;border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      cursor:pointer;font-weight:800;font-size:13px;color:var(--muted)
-    }
-    .toggle.active{color:#071214;border-color: rgba(15,185,177,.6); background: rgba(15,185,177,.95)}
-    .lang{display:flex;gap:8px;align-items:center}
-
-    header.hero{padding:44px 0 18px}
-    .hero-grid{display:grid;grid-template-columns: 1.25fr .75fr; gap:18px; align-items:stretch}
-    .tag{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:9px 12px;border-radius:999px;border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      color:var(--muted);font-size:13px;font-weight:750
-    }
-    .dot{width:8px;height:8px;border-radius:99px;background:var(--teal);box-shadow:0 0 0 4px rgba(15,185,177,.18)}
-    .h1{
-      font-size: clamp(30px, 4.2vw, 56px);
-      line-height:1.05;
-      margin:14px 0 12px;
-      letter-spacing:.2px;
-    }
-    .sub{
-      margin:0 0 18px;
-      color:var(--muted);
-      font-size:16px;
       line-height:1.7;
-      max-width:62ch;
     }
-    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .ghost{
-      padding:10px 14px;border-radius:999px;
-      border:1px solid rgba(15,185,177,.35);
-      background: rgba(15,185,177,.08);
-      color:var(--text);font-weight:850;
-      transition:.18s ease;
+    header {
+      padding:40px 20px;
+      border-bottom:1px solid #222;
     }
-    .ghost:hover{background: rgba(15,185,177,.12); transform: translateY(-1px)}
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+    nav {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      max-width:960px;
+      margin:0 auto;
     }
-    .hero-card{padding:18px}
-    .kpi{display:grid;grid-template-columns:repeat(2,1fr); gap:12px; margin-top:10px}
-    .k{
-      padding:14px;border-radius: 14px;border:1px solid var(--line);
-      background: rgba(0,0,0,.18)
+    nav strong {
+      font-size:18px;
     }
-    .k b{display:block;font-size:18px}
-    .k span{color:var(--muted);font-size:13px;line-height:1.5}
-    section{padding:28px 0}
-    .sec-title{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:14px}
-    .sec-title h2{margin:0;font-size:22px}
-    .sec-title p{margin:0;color:var(--muted);font-size:14px}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr); gap:12px}
-    .grid2{display:grid;grid-template-columns:repeat(2,1fr); gap:12px}
-    .tile{
-      padding:16px;border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.14);
-    }
-    .tile h3{margin:0 0 8px;font-size:16px}
-    .tile p{margin:0;color:var(--muted);line-height:1.7;font-size:14px}
-    .mini{font-size:12px;color:var(--muted);line-height:1.6}
-    .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 10px;border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.14);
-      color:var(--muted);font-size:12px;font-weight:750
-    }
-
-    .projects{display:grid;grid-template-columns:repeat(3,1fr); gap:12px}
-    .proj{
-      border-radius: 18px;border:1px solid var(--line);
-      background: rgba(0,0,0,.14);
-      overflow:hidden;
-    }
-    .ph{
-      aspect-ratio: 4/3;
-      background:
-        radial-gradient(420px 210px at 20% 20%, rgba(15,185,177,.18), transparent 60%),
-        linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      position:relative;
-    }
-    .ph:after{
-      content:"Replace with project photo";
-      position:absolute;inset:auto 14px 14px 14px;
-      color:rgba(233,238,243,.72);
-      font-weight:850;font-size:12px;
-      padding:8px 10px;border-radius:999px;border:1px solid var(--line);
-      background: rgba(0,0,0,.25);
-      width:max-content;max-width:90%;
-    }
-    .proj-body{padding:14px}
-    .proj-body h4{margin:0 0 6px}
-    .proj-body p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
-
-    .faq details{
-      border:1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(0,0,0,.14);
-      padding:12px 14px;
-    }
-    .faq summary{
+    .lang button {
+      background:none;
+      border:1px solid #444;
+      color:#aaa;
+      padding:6px 10px;
+      margin-left:6px;
       cursor:pointer;
-      font-weight:850;
-      outline:none;
     }
-    .faq p{margin:10px 0 0;color:var(--muted);line-height:1.7}
-
-    .form{padding:18px}
-    .row{display:grid;grid-template-columns:1fr 1fr; gap:12px}
-    label{display:block;font-size:13px;color:var(--muted);margin:10px 0 6px}
-    input, textarea, select{
-      width:100%;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.18);
-      color:var(--text);
-      outline:none;
+    .lang button.active {
+      color:#0fb9b1;
+      border-color:#0fb9b1;
     }
-    textarea{min-height:110px;resize:vertical}
-    footer{padding:26px 0 38px;color:var(--muted);border-top:1px solid var(--line)}
-    .foot{display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;align-items:center}
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
-
-    @media (max-width: 980px){
-      .hero-grid{grid-template-columns:1fr}
-      .nav-links{display:none}
-      .projects{grid-template-columns:1fr}
-      .grid3{grid-template-columns:1fr}
-      .grid2{grid-template-columns:1fr}
-      .row{grid-template-columns:1fr}
+    main {
+      max-width:960px;
+      margin:0 auto;
+      padding:40px 20px;
+    }
+    section {
+      margin-bottom:64px;
+    }
+    h1, h2 {
+      font-weight:600;
+    }
+    h1 {
+      font-size:32px;
+    }
+    h2 {
+      font-size:22px;
+      margin-bottom:12px;
+    }
+    p {
+      color:#cfcfcf;
+    }
+    .note {
+      border-left:3px solid #0fb9b1;
+      padding-left:14px;
+      margin-top:14px;
+    }
+    footer {
+      border-top:1px solid #222;
+      padding:30px 20px;
+      text-align:center;
+      color:#777;
+      font-size:14px;
     }
   </style>
 </head>
-
 <body>
-  <div class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="ModuBrix home">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <div>ModuBrix · Space</div>
-          <small data-i18n="nav.sub">One-Stop Interior Fit-Out Integration</small>
-        </div>
-      </a>
 
-      <div class="nav-links" aria-label="Primary">
-        <a class="pill" href="#solutions" data-i18n="nav.sol">Solutions</a>
-        <a class="pill" href="#controls" data-i18n="nav.ctrl">Delivery Controls</a>
-        <a class="pill" href="#projects" data-i18n="nav.pj">Case Studies</a>
-        <a class="pill" href="#faq" data-i18n="nav.faq">FAQ</a>
-        <a class="pill" href="#contact" data-i18n="nav.ct">Contact</a>
-      </div>
-
-      <div class="lang">
-        <button class="toggle active" id="btnZH">中文</button>
-        <button class="toggle" id="btnEN">EN</button>
-        <button class="cta" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})" data-i18n="nav.cta">Get a Quote</button>
-      </div>
+<header>
+  <nav>
+    <strong>ModuBrix · Space</strong>
+    <div class="lang">
+      <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
+      <button id="btnZH" onclick="setLang('zh')">中文</button>
     </div>
-  </div>
+  </nav>
+</header>
 
-  <main id="top" class="wrap">
-    <header class="hero">
-      <div class="tag"><span class="dot"></span><span data-i18n="hero.tag">Penang · KL · Commercial / Residential</span></div>
-      <div class="hero-grid">
-        <div>
-          <h1 class="h1" data-i18n="hero.h1">把内装从“单项施工”升级为<br>“一站式集成交付”</h1>
-          <p class="sub" data-i18n="hero.sub">
-            ModuBrix 以系统化整合为核心，协同范围、材料、工序、接口与现场管理，
-            减少多方扯皮与返工风险，让预算、工期、质量更可控。
-          </p>
-          <div class="hero-actions">
-            <a class="cta" href="#projects" data-i18n="hero.cta1">View Case Studies</a>
-            <a class="ghost" href="#solutions" data-i18n="hero.cta2">See Solutions</a>
-            <a class="pill" href="mailto:modubrix@gmail.com">modubrix@gmail.com</a>
-          </div>
-          <p class="mini" style="margin-top:12px" data-i18n="hero.note">
-            * 体系化交付：范围清单、节点标准、里程碑验收与风险前置，确保“装得上、验得过、用得久”。
-          </p>
-        </div>
+<main>
 
-        <div class="card hero-card">
-          <div class="badge"><span class="dot"></span><span data-i18n="hero.cardTag">Systemized Delivery</span></div>
-          <div class="kpi">
-            <div class="k">
-              <b data-i18n="kpi.1b">3–7 days</b>
-              <span data-i18n="kpi.1s">Initial scope & budget range (info dependent)</span>
-            </div>
-            <div class="k">
-              <b data-i18n="kpi.2b">Interface Mgmt</b>
-              <span data-i18n="kpi.2s">Owner / Main con / Designer / M&E alignment</span>
-            </div>
-            <div class="k">
-              <b data-i18n="kpi.3b">Milestones</b>
-              <span data-i18n="kpi.3s">Mock-up → concealed → finishing → handover</span>
-            </div>
-            <div class="k">
-              <b class="mono">SSM</b>
-              <span class="mono">202503115039 (IP0608413-U)</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+<section>
+  <h1 data-en="Penang-based Custom Interior Fit-Out Consultant"
+      data-zh="槟城本地 · 定制内装顾问">
+  </h1>
 
-    <section id="solutions">
-      <div class="sec-title">
-        <h2 data-i18n="sol.h2">Solutions</h2>
-        <p data-i18n="sol.p">One-stop integration from concept to handover</p>
-      </div>
+  <p data-en="We focus on thoughtful decision-making, material integration, and practical execution. We do not rush projects. We care about comfort, long-term use, and doing things properly."
+     data-zh="我们专注于判断、材料整合与实际落地。不赶工期，更在意长期使用的舒适度，把事情做对。">
+  </p>
 
-      <div class="grid3">
-        <div class="tile">
-          <h3 data-i18n="sol.1h">Office Fit-Out</h3>
-          <p data-i18n="sol.1p">Layout + finishes + carpentry + lighting coordination. Focus on timeline control and clean handover.</p>
-        </div>
-        <div class="tile">
-          <h3 data-i18n="sol.2h">Retail / Showroom</h3>
-          <p data-i18n="sol.2p">Brand-driven detailing, fast installation, interface management for shopfront / signage / M&E.</p>
-        </div>
-        <div class="tile">
-          <h3 data-i18n="sol.3h">Residential Finishing</h3>
-          <p data-i18n="sol.3p">Kitchen / wardrobe / doors / bathrooms integration with tolerance checks and durable detailing.</p>
-        </div>
-      </div>
+  <p class="note"
+     data-en="Custom work takes time. We would rather slow down and do it right."
+     data-zh="定制需要时间，我们宁愿慢一点，也要把事情做对。">
+  </p>
+</section>
 
-      <div class="grid2" style="margin-top:12px">
-        <div class="tile">
-          <h3 data-i18n="sol.4h">What we integrate</h3>
-          <p data-i18n="sol.4p">Scope list · Material specs · Shop drawings coordination · Delivery batches · Trade sequencing · Interfaces & punch list.</p>
-        </div>
-        <div class="tile">
-          <h3 data-i18n="sol.5h">What you get</h3>
-          <p data-i18n="sol.5p">Clear scope & standards, transparent progress, fewer disputes, less rework, a handover that passes inspection.</p>
-        </div>
-      </div>
-    </section>
+<section>
+  <h2 data-en="Consult · How We Help You Decide"
+      data-zh="Consult · 我们如何协助你做决定"></h2>
 
-    <section id="controls">
-      <div class="sec-title">
-        <h2 data-i18n="ctrl.h2">Delivery Controls</h2>
-        <p data-i18n="ctrl.p">体系化公司口吻：范围 / 过程 / 风险 三控</p>
-      </div>
+  <p data-en="Most interior problems are not about whether something can be done, but whether it should be done, when to do it, and whether it will cause regret later."
+     data-zh="内装里真正困难的，往往不是能不能做，而是要不要做、什么时候做、以后会不会后悔。">
+  </p>
 
-      <div class="grid3">
-        <div class="tile">
-          <div class="badge"><span class="dot"></span><span data-i18n="ctrl.1t">Scope Control</span></div>
-          <h3 style="margin-top:10px" data-i18n="ctrl.1h">先定义边界，再做报价</h3>
-          <p data-i18n="ctrl.1p">范围清单、材料等级、收口标准、交接位责任一次讲清，减少增项争议。</p>
-        </div>
-        <div class="tile">
-          <div class="badge"><span class="dot"></span><span data-i18n="ctrl.2t">Process Control</span></div>
-          <h3 style="margin-top:10px" data-i18n="ctrl.2h">里程碑管理施工</h3>
-          <p data-i18n="ctrl.2p">样板确认 → 隐蔽工程 → 面层完成 → 最终验收，节点可追溯。</p>
-        </div>
-        <div class="tile">
-          <div class="badge"><span class="dot"></span><span data-i18n="ctrl.3t">Risk Control</span></div>
-          <h3 style="margin-top:10px" data-i18n="ctrl.3h">风险前置到开工前</h3>
-          <p data-i18n="ctrl.3p">尺寸偏差、到货周期、工序冲突、现场限制逐项确认，并建立备选方案。</p>
-        </div>
-      </div>
-    </section>
+  <p data-en="Our role is not to decide for you, but to think through decisions together at every critical point."
+     data-zh="我们的角色不是替你做决定，而是在每一个关键节点，陪你把事情想清楚。">
+  </p>
 
-    <section id="projects">
-      <div class="sec-title">
-        <h2 data-i18n="pj.h2">Case Studies</h2>
-        <p data-i18n="pj.p">换成你的真实项目照片后，会非常像企业官网</p>
-      </div>
+  <p data-en="We focus on usability, comfort, maintenance, and long-term practicality rather than visual impact alone."
+     data-zh="我们更关注使用、舒适、维护与长期实用性，而不仅仅是外观。">
+  </p>
+</section>
 
-      <div class="projects">
-        <div class="proj">
-          <div class="ph" role="img" aria-label="Project photo 1"></div>
-          <div class="proj-body">
-            <h4 data-i18n="pj.1h">Office Fit-Out · Delivery Under Control</h4>
-            <p data-i18n="pj.1p">Key: scope clarity + material batches + milestone inspections → smoother handover.</p>
-          </div>
-        </div>
-        <div class="proj">
-          <div class="ph" role="img" aria-label="Project photo 2"></div>
-          <div class="proj-body">
-            <h4 data-i18n="pj.2h">Retail · Fast Turnaround</h4>
-            <p data-i18n="pj.2p">Key: interface management (shopfront/signage/M&E) → less site clash & rework.</p>
-          </div>
-        </div>
-        <div class="proj">
-          <div class="ph" role="img" aria-label="Project photo 3"></div>
-          <div class="proj-body">
-            <h4 data-i18n="pj.3h">Residential · Durable Detailing</h4>
-            <p data-i18n="pj.3p">Key: tolerance checks + wet area detailing → cleaner joints, easier maintenance.</p>
-          </div>
-        </div>
-      </div>
+<section>
+  <h2 data-en="Materials Notes · How We Think About Materials"
+      data-zh="Materials Notes · 材料判断笔记"></h2>
 
-      <p class="mini" style="margin-top:10px" data-i18n="pj.note">
-        你发我 6–12 张项目照片 + 每个项目一句话（地点/类型/面积/工期），我可以把这里改成真正的“案例页口吻”。
-      </p>
-    </section>
+  <p data-en="This is not a product catalogue. These notes reflect how we evaluate materials in real interior use."
+     data-zh="这不是产品目录，而是我们在实际内装中判断材料的方式。">
+  </p>
 
-    <section id="faq">
-      <div class="sec-title">
-        <h2 data-i18n="faq.h2">FAQ</h2>
-        <p data-i18n="faq.p">把客户最担心的问题写在前面，转化更高</p>
-      </div>
+  <p class="note"
+     data-en="Materials should feel right to use, not just look good on day one."
+     data-zh="材料不只是第一天好看，而是每天用得顺。">
+  </p>
 
-      <div class="grid2 faq">
-        <details open>
-          <summary data-i18n="faq.1q">你们是做设计还是做施工？</summary>
-          <p data-i18n="faq.1a">我们以“集成交付”为核心：可配合设计，也可提供设计+施工一体化。关键是把范围、材料、工序与接口统一管理，确保落地与验收。</p>
-        </details>
-        <details>
-          <summary data-i18n="faq.2q">报价为什么要先确认范围？</summary>
-          <p data-i18n="faq.2a">内装成本差异主要来自范围边界与节点标准。先把清单和标准讲清，报价才可比、可控，也能减少后期增项争议。</p>
-        </details>
-        <details>
-          <summary data-i18n="faq.3q">工期怎么保证？</summary>
-          <p data-i18n="faq.3a">用关键路径排程 + 材料到货批次 + 里程碑验收控制，提前锁定关键物料与接口条件，减少等待和返工。</p>
-        </details>
-        <details>
-          <summary data-i18n="faq.4q">你们主要服务哪些客户？</summary>
-          <p data-i18n="faq.4a">设计师、业主方与总包。只要你需要一个“能扛现场、能对齐多方、能把细节落地”的执行团队，就适合。</p>
-        </details>
-      </div>
-    </section>
+  <p data-en="We consider durability, maintenance, consistency, and whether something is truly worth customising."
+     data-zh="我们会考虑耐用度、维护方式、一致性，以及是否真的值得定制。">
+  </p>
+</section>
 
-    <section id="contact">
-      <div class="sec-title">
-        <h2 data-i18n="ct.h2">Contact & Quotation</h2>
-        <p data-i18n="ct.p">Fill this and generate an email draft (copy-paste)</p>
-      </div>
+<section>
+  <h2 data-en="Execution · Practical Follow-through"
+      data-zh="Execution · 实际落地"></h2>
 
-      <div class="card form">
-        <div class="row">
-          <div>
-            <label data-i18n="ct.name">Name</label>
-            <input id="name" placeholder="Kelvin Ong / Austin Ong" />
-          </div>
-          <div>
-            <label data-i18n="ct.phone">Phone / WhatsApp</label>
-            <input id="phone" placeholder="+60 ..." />
-          </div>
-        </div>
+  <p data-en="We do not stop at advice. Where required, we assist with coordination, material integration, and execution follow-through."
+     data-zh="我们不是只给建议就离开，而是在需要时协助跟进与协调。">
+  </p>
 
-        <div class="row">
-          <div>
-            <label data-i18n="ct.type">Project type</label>
-            <select id="type">
-              <option data-i18n="ct.opt1">Office</option>
-              <option data-i18n="ct.opt2">Retail / Showroom</option>
-              <option data-i18n="ct.opt3">Residential</option>
-              <option data-i18n="ct.opt4">Others</option>
-            </select>
-          </div>
-          <div>
-            <label data-i18n="ct.city">City</label>
-            <input id="city" placeholder="Penang / KL / ..." />
-          </div>
-        </div>
+  <p data-en="Communication stays direct. No unnecessary layers or departments."
+     data-zh="沟通保持直接清晰，没有多余的层级。">
+  </p>
+</section>
 
-        <label data-i18n="ct.msg">Requirements (scope / size / budget / target date)</label>
-        <textarea id="msg" placeholder="Tell us what you need..."></textarea>
+<section>
+  <h2 data-en="Contact · Start with a Conversation"
+      data-zh="Contact · 从对话开始"></h2>
 
-        <div class="hero-actions" style="margin-top:14px">
-          <button class="cta" id="sendBtn" data-i18n="ct.send">Generate Email</button>
-          <a class="ghost" href="mailto:modubrix@gmail.com" data-i18n="ct.email">Email: modubrix@gmail.com</a>
-          <span class="pill mono">SSM: 202503115039 (IP0608413-U)</span>
-        </div>
+  <p data-en="If you would like to think through your space carefully, we would be glad to hear your ideas."
+     data-zh="如果你愿意慢慢把空间想清楚，我们很乐意听你分享想法。">
+  </p>
 
-        <p class="mini" style="margin-top:10px" data-i18n="ct.small">
-          Button will open your email client with a prepared draft. It will NOT send automatically.
-        </p>
-      </div>
-    </section>
+  <p class="note"
+     data-en="No pressure. A conversation is always a good start."
+     data-zh="不急着决定，先聊聊也可以。">
+  </p>
 
-    <footer>
-      <div class="foot">
-        <div>
-          <div style="font-weight:900;color:var(--text)">ModuBrix · Space</div>
-          <div class="mini">One-Stop Interior Fit-Out Integration</div>
-          <div class="mini mono">SSM: 202503115039 (IP0608413-U)</div>
-        </div>
-        <div class="mini">
-          <div>Email: <a href="mailto:modubrix@gmail.com" class="mono">modubrix@gmail.com</a></div>
-          <div class="mono">© <span id="year"></span> ModuBrix</div>
-        </div>
-      </div>
-    </footer>
-  </main>
+  <p>Email: modubrix@gmail.com<br>
+     SSM: 202503115039 (IP0608413-U)</p>
+</section>
 
-  <script>
-    const i18n = {
-      zh: {
-        "nav.sub":"一站式内装集成交付","nav.sol":"解决方案","nav.ctrl":"交付控制","nav.pj":"案例","nav.faq":"FAQ","nav.ct":"联系","nav.cta":"获取报价",
-        "hero.tag":"槟城 · 吉隆坡 · 商业/住宅内装","hero.h1":"把内装从“单项施工”升级为<br>“一站式集成交付”",
-        "hero.sub":"ModuBrix 以系统化整合为核心，协同范围、材料、工序、接口与现场管理，减少多方扯皮与返工风险，让预算、工期、质量更可控。",
-        "hero.cta1":"查看案例","hero.cta2":"查看解决方案",
-        "hero.note":"* 体系化交付：范围清单、节点标准、里程碑验收与风险前置，确保“装得上、验得过、用得久”。",
-        "hero.cardTag":"体系化交付","kpi.1b":"3–7 天","kpi.1s":"初版范围与成本区间（视资料完整度）",
-        "kpi.2b":"接口管理","kpi.2s":"业主/总包/设计/机电对齐",
-        "kpi.3b":"里程碑","kpi.3s":"样板→隐蔽→面层→交付",
-        "sol.h2":"解决方案","sol.p":"从概念到交付的一站式整合",
-        "sol.1h":"办公空间","sol.1p":"布局+饰面+木作+灯光协调，强调工期与交付稳定性。",
-        "sol.2h":"零售/展厅","sol.2p":"品牌化细节与快速安装，管理门头/标识/机电接口减少冲突。",
-        "sol.3h":"住宅精装","sol.3p":"厨房/衣柜/门套/卫浴整合，做尺寸复核与耐用收口。",
-        "sol.4h":"我们整合什么","sol.4p":"范围清单·材料规格·图纸协调·到货批次·工序穿插·接口与缺陷清单。",
-        "sol.5h":"你得到什么","sol.5p":"范围与标准清晰、进度透明、争议更少、返工更少、验收更顺。",
-        "ctrl.h2":"交付控制","ctrl.p":"范围/过程/风险 三控，让项目更可控",
-        "ctrl.1t":"范围控制","ctrl.1h":"先定义边界，再做报价","ctrl.1p":"范围清单、材料等级、收口标准、交接位责任一次讲清，减少增项争议。",
-        "ctrl.2t":"过程控制","ctrl.2h":"里程碑管理施工","ctrl.2p":"样板确认 → 隐蔽工程 → 面层完成 → 最终验收，节点可追溯。",
-        "ctrl.3t":"风险控制","ctrl.3h":"风险前置到开工前","ctrl.3p":"尺寸偏差、到货周期、工序冲突、现场限制逐项确认，并建立备选方案。",
-        "pj.h2":"项目案例","pj.p":"换成你的真实项目照片后，会非常像企业官网",
-        "pj.1h":"办公空间 · 交付可控","pj.1p":"关键：范围清晰+到货批次+里程碑验收 → 交付更顺。",
-        "pj.2h":"零售 · 快速开业","pj.2p":"关键：门头/标识/机电接口管理 → 冲突更少、返工更少。",
-        "pj.3h":"住宅 · 耐用收口","pj.3p":"关键：尺寸复核+湿区细节 → 缝更干净、更好维护。",
-        "pj.note":"你发我 6–12 张项目照片 + 每个项目一句话（地点/类型/面积/工期），我可以把这里改成真正的“案例页口吻”。",
-        "faq.h2":"常见问题","faq.p":"把客户最担心的问题写在前面，转化更高",
-        "faq.1q":"你们是做设计还是做施工？","faq.1a":"我们以“集成交付”为核心：可配合设计，也可提供设计+施工一体化。关键是把范围、材料、工序与接口统一管理，确保落地与验收。",
-        "faq.2q":"报价为什么要先确认范围？","faq.2a":"内装成本差异主要来自范围边界与节点标准。先把清单和标准讲清，报价才可比、可控，也能减少后期增项争议。",
-        "faq.3q":"工期怎么保证？","faq.3a":"用关键路径排程 + 材料到货批次 + 里程碑验收控制，提前锁定关键物料与接口条件，减少等待和返工。",
-        "faq.4q":"你们主要服务哪些客户？","faq.4a":"设计师、业主方与总包。只要你需要一个“能扛现场、能对齐多方、能把细节落地”的执行团队，就适合。",
-        "ct.h2":"联系与报价","ct.p":"填写后生成邮件草稿（复制粘贴即可）",
-        "ct.name":"姓名","ct.phone":"电话/WhatsApp","ct.type":"项目类型","ct.city":"城市",
-        "ct.opt1":"办公","ct.opt2":"零售/展厅","ct.opt3":"住宅","ct.opt4":"其他",
-        "ct.msg":"需求说明（范围/面积/预算/目标交付）",
-        "ct.send":"生成邮件","ct.email":"邮箱：modubrix@gmail.com",
-        "ct.small":"按钮会打开你的邮箱并自动填好草稿，不会自动发送。"
-      },
-      en: {
-        "nav.sub":"One-Stop Interior Fit-Out Integration","nav.sol":"Solutions","nav.ctrl":"Delivery Controls","nav.pj":"Case Studies","nav.faq":"FAQ","nav.ct":"Contact","nav.cta":"Get a Quote",
-        "hero.tag":"Penang · KL · Commercial / Residential",
-        "hero.h1":"From scattered trades to<br>one-stop integrated delivery",
-        "hero.sub":"ModuBrix integrates scope, materials, sequencing, interfaces and site coordination to reduce friction and rework—keeping budget, timeline and quality under control.",
-        "hero.cta1":"View Case Studies","hero.cta2":"See Solutions",
-        "hero.note":"* Systemized delivery with scope lists, detailing standards, milestone inspections and proactive risk control.",
-        "hero.cardTag":"Systemized Delivery",
-        "kpi.1b":"3–7 days","kpi.1s":"Initial scope & budget range (info dependent)",
-        "kpi.2b":"Interface Mgmt","kpi.2s":"Owner / Main con / Designer / M&E alignment",
-        "kpi.3b":"Milestones","kpi.3s":"Mock-up → concealed → finishing → handover",
-        "sol.h2":"Solutions","sol.p":"One-stop integration from concept to handover",
-        "sol.1h":"Office Fit-Out","sol.1p":"Layout + finishes + carpentry + lighting coordination. Focus on timeline control and clean handover.",
-        "sol.2h":"Retail / Showroom","sol.2p":"Brand-driven detailing, fast installation, interface management for shopfront / signage / M&E.",
-        "sol.3h":"Residential Finishing","sol.3p":"Kitchen / wardrobe / doors / bathrooms integration with tolerance checks and durable detailing.",
-        "sol.4h":"What we integrate","sol.4p":"Scope list · Material specs · Drawing coordination · Delivery batches · Sequencing · Interfaces & punch list.",
-        "sol.5h":"What you get","sol.5p":"Clear scope & standards, transparent progress, fewer disputes, less rework, a handover that passes inspection.",
-        "ctrl.h2":"Delivery Controls","ctrl.p":"Scope / process / risk controls for reliable delivery",
-        "ctrl.1t":"Scope Control","ctrl.1h":"Define boundaries before pricing","ctrl.1p":"Scope list, material grade, detailing standard and interface responsibilities—reducing variations and disputes.",
-        "ctrl.2t":"Process Control","ctrl.2h":"Milestone-based execution","ctrl.2p":"Mock-up → concealed works → finishing check → final handover, with traceable inspections.",
-        "ctrl.3t":"Risk Control","ctrl.3h":"Handle risks upfront","ctrl.3p":"Tolerances, lead time, trade clashes and site constraints—confirmed early with contingency options.",
-        "pj.h2":"Case Studies","pj.p":"Replace placeholders with your real project photos for a corporate feel",
-        "pj.1h":"Office Fit-Out · Delivery Under Control","pj.1p":"Scope clarity + delivery batches + milestone inspections → smoother handover.",
-        "pj.2h":"Retail · Fast Turnaround","pj.2p":"Interface management (shopfront/signage/M&E) → less clashes & rework.",
-        "pj.3h":"Residential · Durable Detailing","pj.3p":"Tolerance checks + wet area detailing → cleaner joints, easier maintenance.",
-        "pj.note":"Send 6–12 project photos + a 1-line brief (location/type/size/timeline). I’ll rewrite these as real case studies.",
-        "faq.h2":"FAQ","faq.p":"Answer concerns early to improve conversion",
-        "faq.1q":"Do you do design or construction?","faq.1a":"We focus on integrated delivery—working with designers or offering design-and-build. The key is unified scope, sequencing and interface control for buildability and inspection.",
-        "faq.2q":"Why confirm scope before pricing?","faq.2a":"Fit-out cost differences come from boundaries and detailing standards. Clear scope makes quotes comparable and reduces variations later.",
-        "faq.3q":"How do you keep timeline?","faq.3a":"Critical path scheduling + delivery batching + milestone inspections, locking key materials and interface conditions early.",
-        "faq.4q":"Who do you typically serve?","faq.4a":"Designers, owners and main contractors—anyone who needs strong site coordination and reliable handover.",
-        "ct.h2":"Contact & Quotation","ct.p":"Fill this and generate an email draft (copy-paste)",
-        "ct.name":"Name","ct.phone":"Phone / WhatsApp","ct.type":"Project type","ct.city":"City",
-        "ct.opt1":"Office","ct.opt2":"Retail / Showroom","ct.opt3":"Residential","ct.opt4":"Others",
-        "ct.msg":"Requirements (scope / size / budget / target date)",
-        "ct.send":"Generate Email","ct.email":"Email: modubrix@gmail.com",
-        "ct.small":"Button will open your email client with a prepared draft. It will NOT send automatically."
-      }
-    };
+</main>
 
-    function setLang(lang){
-      document.querySelectorAll("[data-i18n]").forEach(el=>{
-        const key = el.getAttribute("data-i18n");
-        if(i18n[lang] && i18n[lang][key]){
-          // allow <br> in some keys
-          if(key==="hero.h1") el.innerHTML = i18n[lang][key];
-          else el.textContent = i18n[lang][key];
-        }
-      });
-      document.getElementById("btnZH").classList.toggle("active", lang==="zh");
-      document.getElementById("btnEN").classList.toggle("active", lang==="en");
-      document.documentElement.lang = (lang==="zh") ? "zh-Hans" : "en";
-    }
-    document.getElementById("btnZH").addEventListener("click", ()=>setLang("zh"));
-    document.getElementById("btnEN").addEventListener("click", ()=>setLang("en"));
-    document.getElementById("year").textContent = new Date().getFullYear();
+<footer>
+  © ModuBrix · Space
+</footer>
 
-    document.getElementById("sendBtn").addEventListener("click", ()=>{
-      const name = document.getElementById("name").value || "(Name)";
-      const phone = document.getElementById("phone").value || "(Phone)";
-      const type = document.getElementById("type").value || "(Type)";
-      const city = document.getElementById("city").value || "(City)";
-      const msg = document.getElementById("msg").value || "(Details)";
+<script>
+function setLang(lang) {
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.textContent = el.getAttribute('data-' + lang);
+  });
+  document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+  document.getElementById('btnZH').classList.toggle('active', lang === 'zh');
+}
+setLang('en');
+</script>
 
-      const subject = encodeURIComponent(`[Quotation Request] ${type} - ${city}`);
-      const body = encodeURIComponent(
-`Hi ModuBrix Team,
-
-My name: ${name}
-Phone/WhatsApp: ${phone}
-Project type: ${type}
-City: ${city}
-
-Requirements:
-${msg}
-
-Please advise the estimated cost range, timeline, and required next steps.
-
-Thanks,
-${name}`
-      );
-      window.location.href = `mailto:modubrix@gmail.com?subject=${subject}&body=${body}`;
-    });
-  </script>
 </body>
 </html>
