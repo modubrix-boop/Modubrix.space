@@ -1,311 +1,178 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hans">
 <head>
-<meta charset="utf-8">
-<title>ModuBrix · Space</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="stylesheet" href="style.css">
-<script src="lang.js"></script>
-
-<style>
-/* =========================
-   HOME – STYLE CARDS CAROUSEL
-   ========================= */
-
-.hero{
-  padding: 20px 0 10px 0;
-}
-
-.hero p{
-  max-width: 760px;
-  color:#bdbdbd;
-}
-
-.deck-wrap{
-  margin-top: 28px;
-  padding: 18px;
-  border-radius: 20px;
-  border:1px solid #222;
-  background: rgba(255,255,255,0.02);
-}
-
-.deck-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:16px;
-  flex-wrap:wrap;
-}
-
-.deck-head h2{
-  margin:0;
-  font-size:18px;
-}
-
-.deck-head p{
-  margin:6px 0 0 0;
-  font-size:13px;
-  color:#9a9a9a;
-  max-width:720px;
-}
-
-.deck-controls{
-  display:flex;
-  gap:8px;
-}
-
-.deck-controls button{
-  width:34px;
-  height:34px;
-  border-radius:12px;
-  border:1px solid #333;
-  background:rgba(255,255,255,0.02);
-  color:#bbb;
-  cursor:pointer;
-}
-.deck-controls button:hover{
-  color:#0fb9b1;
-  border-color:#0fb9b1;
-}
-
-/* IG-like rail */
-.deck{
-  margin-top:14px;
-}
-
-.rail{
-  display:flex;
-  gap:14px;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-
-  padding:6px 18px 12px 18px;
-
-  scrollbar-width:none;
-  -ms-overflow-style:none;
-}
-.rail::-webkit-scrollbar{ display:none; }
-
-.card{
-  flex:0 0 78%;
-  max-width:340px;
-  scroll-snap-align:center;
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid #222;
-  background:rgba(255,255,255,0.02);
-  text-decoration:none;
-  color:inherit;
-  transition:transform .18s ease, border-color .18s ease;
-}
-@media (min-width:900px){
-  .card{ flex-basis:300px; }
-}
-
-.card:hover{
-  transform:translateY(-2px);
-  border-color:#0fb9b1;
-}
-
-.thumb{
-  height:200px;
-  background-size:cover;
-  background-position:center;
-  position:relative;
-}
-.thumb::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.25));
-}
-
-.card-body{
-  padding:14px 14px 16px 14px;
-}
-
-.tag{
-  display:inline-block;
-  font-size:12px;
-  color:#9a9a9a;
-  border:1px solid #2a2a2a;
-  padding:4px 9px;
-  border-radius:999px;
-  margin-bottom:10px;
-}
-
-.card-body h3{
-  margin:0;
-  font-size:16px;
-  color:#fff;
-}
-
-.card-body p{
-  margin:8px 0 0 0;
-  font-size:13px;
-  line-height:1.7;
-  color:#bdbdbd;
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ModuBrix.space</title>
+  <link rel="stylesheet" href="assets/site.css" />
 </head>
-
 <body>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-badge"></div>
+        <div>
+          <h1>ModuBrix.space</h1>
+          <div class="sub" data-i18n
+               data-zh="槟城 · 小而精 · 定制内装（Consult + Materials）"
+               data-en="Penang · Small & Precise · Bespoke Interior (Consult + Materials)">槟城 · 小而精 · 定制内装（Consult + Materials）</div>
+        </div>
+      </div>
 
-<header>
-  <nav>
-    <strong>ModuBrix · Space</strong>
-
-    <div class="navlinks">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="consult.html">Consult</a>
-      <a href="materials.html">Materials</a>
-      <a href="materials-notes.html">Notes</a>
-      <a href="reference.html">Reference</a>
-      <a href="contact.html">Contact</a>
+      <div class="controls">
+        <div class="pill">
+          <button class="lang-btn active" data-lang="zh">中文</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <a class="small-link" href="mailto:modubrix@gmail.com">modubrix@gmail.com</a>
+      </div>
     </div>
 
-    <div class="lang">
-      <button id="btn-zh" onclick="setLang('zh')">中文</button>
-      <button id="btn-en" onclick="setLang('en')">EN</button>
-    </div>
-  </nav>
-</header>
-
-<main>
-
-<section class="hero">
-  <h1
-    data-zh="槟城本地 · 小而精的定制内装顾问"
-    data-en="Penang-based · Small, Focused Interior Fit-Out Consultant">
-    槟城本地 · 小而精的定制内装顾问
-  </h1>
-
-  <p
-    data-zh="我们不卖风格，而是通过材料与构成，协助你做更耐看、更舒服、更少后悔的决定。"
-    data-en="We don’t sell styles. We consult through materials and construction logic—to help you make decisions that feel better, last longer, and regret less.">
-    我们不卖风格，而是通过材料与构成，协助你做更耐看、更舒服、更少后悔的决定。
-  </p>
-</section>
-
-<section class="deck-wrap">
-  <div class="deck-head">
-    <div>
-      <h2
-        data-zh="Style Preview · 风格观察卡"
-        data-en="Style Preview · Lens Cards">
-        Style Preview · 风格观察卡
-      </h2>
-      <p
-        data-zh="从你有感觉的风格开始。我们用材料与构成逻辑去判断，而不是用标签。"
-        data-en="Start from a style that resonates. We judge through materials and construction logic—not labels.">
-        从你有感觉的风格开始。我们用材料与构成逻辑去判断，而不是用标签。
+    <div class="hero">
+      <h2 data-i18n
+          data-zh="不是选风格，而是选“怎么生活”。"
+          data-en="Not picking a style — picking how you live.">不是选风格，而是选“怎么生活”。</h2>
+      <p data-i18n
+         data-zh="ModuBrix 用「睡 + 用 + 收 + 展」的系统逻辑，把风格变成可落地的空间。主页只放 5 个最有立场的房间：你一眼就能看出不一样。"
+         data-en="ModuBrix uses a 'Sleep + Use + Store + Display' system logic to make styles buildable. The homepage shows only 5 rooms with a clear stance — you can tell the difference at a glance.">
+         ModuBrix 用「睡 + 用 + 收 + 展」的系统逻辑，把风格变成可落地的空间。主页只放 5 个最有立场的房间：你一眼就能看出不一样。
       </p>
+      <div class="hint">
+        <span class="tag"><span class="dot"></span><span data-i18n data-zh="顾问式判断" data-en="Consult-led judgement">顾问式判断</span></span>
+        <span class="tag"><span class="dot"></span><span data-i18n data-zh="材料与施工逻辑" data-en="Materials & build logic">材料与施工逻辑</span></span>
+        <span class="tag"><span class="dot"></span><span data-i18n data-zh="不赶工期，做可住的结果" data-en="Not rushed — built for living">不赶工期，做可住的结果</span></span>
+      </div>
     </div>
 
-    <div class="deck-controls">
-      <button id="prevBtn">‹</button>
-      <button id="nextBtn">›</button>
+    <div class="section-title">
+      <h3 data-i18n data-zh="五个房间 · 五种立场" data-en="5 Rooms · 5 Stances">五个房间 · 五种立场</h3>
+      <span data-i18n data-zh="左右滑动像 IG（也可以键盘 ← →）" data-en="Swipe like IG (or use ← →)">左右滑动像 IG（也可以键盘 ← →）</span>
+    </div>
+
+    <div class="cards-wrap">
+      <div class="cards">
+
+        <!-- 1 Minimalist -->
+        <a class="card" href="minimalist.html" aria-label="Minimalist">
+          <div class="img" style="background-image:url('assets/style-minimalist.jpg')"></div>
+          <div class="shade"></div>
+          <div class="body">
+            <div class="kicker"><b>Minimalist</b> · MUJI</div>
+            <h4 data-i18n data-zh="克制到让材料说话" data-en="Restraint lets materials speak.">克制到让材料说话</h4>
+            <p data-i18n
+               data-zh="留白、低反光、收得干净。这个房间不讨好，但住久更稳。"
+               data-en="White space, low glare, and clean storage. Not trying to please — stable for long-term living.">
+               留白、低反光、收得干净。这个房间不讨好，但住久更稳。
+            </p>
+            <div class="cta">
+              <span class="btn primary" data-i18n data-zh="点进去看细则" data-en="Open details">点进去看细则</span>
+              <span class="meta" data-i18n data-zh="睡 · 收 · 静" data-en="Sleep · Store · Quiet">睡 · 收 · 静</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 2 Bohemian -->
+        <a class="card" href="bohemian.html" aria-label="Bohemian">
+          <div class="img" style="background-image:url('assets/style-bohemian.jpg')"></div>
+          <div class="shade"></div>
+          <div class="body">
+            <div class="kicker"><b>Bohemian</b> · Eclectic</div>
+            <h4 data-i18n data-zh="允许密度，但要可控" data-en="High density — but controlled.">允许密度，但要可控</h4>
+            <p data-i18n
+               data-zh="表达感强、纹理多，但结构不乱。它是被“判断”过的松弛。"
+               data-en="Expressive textures and layers, without chaos. A relaxed room that is still judged and controlled.">
+               表达感强、纹理多，但结构不乱。它是被“判断”过的松弛。
+            </p>
+            <div class="cta">
+              <span class="btn primary" data-i18n data-zh="点进去看细则" data-en="Open details">点进去看细则</span>
+              <span class="meta" data-i18n data-zh="展 · 坐 · 生活" data-en="Display · Sit · Lived-in">展 · 坐 · 生活</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 3 Old Money -->
+        <a class="card" href="old-money.html" aria-label="Old Money">
+          <div class="img" style="background-image:url('assets/style-oldmoney.jpg')"></div>
+          <div class="shade"></div>
+          <div class="body">
+            <div class="kicker"><b>Western</b> · Old Money</div>
+            <h4 data-i18n data-zh="不炫耀的重量感" data-en="Quiet weight, no showing off.">不炫耀的重量感</h4>
+            <p data-i18n
+               data-zh="靠比例、阴影与材质赢。像私人书房并入卧室：安静、克制、有权威。"
+               data-en="Wins with proportion, shadow and materials. A private study merged into a bedroom — quiet, restrained, authoritative.">
+               靠比例、阴影与材质赢。像私人书房并入卧室：安静、克制、有权威。
+            </p>
+            <div class="cta">
+              <span class="btn primary" data-i18n data-zh="点进去看细则" data-en="Open details">点进去看细则</span>
+              <span class="meta" data-i18n data-zh="阴影 · 书房点" data-en="Shadow · Study corner">阴影 · 书房点</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 4 New Chinese -->
+        <a class="card" href="new-chinese.html" aria-label="New Chinese">
+          <div class="img" style="background-image:url('assets/style-newchinese.jpg')"></div>
+          <div class="shade"></div>
+          <div class="body">
+            <div class="kicker"><b>New Chinese</b> · Modern</div>
+            <h4 data-i18n data-zh="留，而不是空" data-en="Keep, not empty.">留，而不是空</h4>
+            <p data-i18n
+               data-zh="深浅对比、留白与重心共存。不走日式 Zen，强调中国的“收与留”。"
+               data-en="Balance of dark/light, white space and a clear center. Not Japanese Zen — it keeps the Chinese restraint and weight.">
+               深浅对比、留白与重心共存。不走日式 Zen，强调中国的“收与留”。
+            </p>
+            <div class="cta">
+              <span class="btn primary" data-i18n data-zh="点进去看细则" data-en="Open details">点进去看细则</span>
+              <span class="meta" data-i18n data-zh="收 · 留 · 重心" data-en="Restrain · Keep · Center">收 · 留 · 重心</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 5 Dark Modern -->
+        <a class="card" href="dark-modern.html" aria-label="Dark Modern">
+          <div class="img" style="background-image:url('assets/style-darkmodern.jpg')"></div>
+          <div class="shade"></div>
+          <div class="body">
+            <div class="kicker"><b>Dark Modern</b> · Night</div>
+            <h4 data-i18n data-zh="夜晚才是它的表情" data-en="Its true face is at night.">夜晚才是它的表情</h4>
+            <p data-i18n
+               data-zh="强对比、低位光、带点危险但可住。让人记得住，不讨好所有人。"
+               data-en="High contrast, low lighting — slightly dangerous but livable. Memorable, not designed to please everyone.">
+               强对比、低位光、带点危险但可住。让人记得住，不讨好所有人。
+            </p>
+            <div class="cta">
+              <span class="btn primary" data-i18n data-zh="点进去看细则" data-en="Open details">点进去看细则</span>
+              <span class="meta" data-i18n data-zh="夜 · 影 · 对比" data-en="Night · Shadow · Contrast">夜 · 影 · 对比</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="nav-row">
+        <div class="nav-hint" data-i18n
+             data-zh="提示：主页只放 5 个“立场房间”，其余风格在二级页慢慢扩展。"
+             data-en="Tip: Homepage shows only 5 stance-rooms. Expand the full style library inside detail pages.">
+          提示：主页只放 5 个“立场房间”，其余风格在二级页慢慢扩展。
+        </div>
+        <div class="nav-arrows">
+          <button class="icon-btn" id="scrollLeft" aria-label="Left">‹</button>
+          <button class="icon-btn" id="scrollRight" aria-label="Right">›</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>© <span id="y"></span> ModuBrix.space</div>
+      <div data-i18n data-zh="槟城本地｜定制内装｜Consult + Materials" data-en="Penang｜Bespoke interior｜Consult + Materials">
+        槟城本地｜定制内装｜Consult + Materials
+      </div>
     </div>
   </div>
 
-  <div class="deck">
-    <div class="rail" id="styleRail">
-
-      <a class="card" href="materials-notes.html">
-        <div class="thumb" style="background-image:url('assets/style-minimal.jpg')"></div>
-        <div class="card-body">
-          <span class="tag">Minimal / MUJI</span>
-          <h3>克制，让材料自己说话</h3>
-          <p>低反光 · 触感优先 · 少但用得久</p>
-        </div>
-      </a>
-
-      <a class="card" href="materials-notes.html">
-        <div class="thumb" style="background-image:url('assets/style-nature.jpg')"></div>
-        <div class="card-body">
-          <span class="tag">Nature / Organic</span>
-          <h3>不完美的纹理，反而更放松</h3>
-          <p>自然肌理 · 呼吸感 · 柔和光影</p>
-        </div>
-      </a>
-
-      <a class="card" href="materials-notes.html">
-        <div class="thumb" style="background-image:url('assets/style-boho.jpg')"></div>
-        <div class="card-body">
-          <span class="tag">Bohemian</span>
-          <h3>混搭可以自由，但底层要稳定</h3>
-          <p>多材质 · 手工感 · 结构要稳</p>
-        </div>
-      </a>
-
-      <a class="card" href="materials-notes.html">
-        <div class="thumb" style="background-image:url('assets/style-mediterranean.jpg')"></div>
-        <div class="card-body">
-          <span class="tag">Mediterranean</span>
-          <h3>粗粝的表面，承载阳光与空气</h3>
-          <p>矿物感 · 不规则 · 有温度</p>
-        </div>
-      </a>
-
-      <a class="card" href="materials-notes.html">
-        <div class="thumb" style="background-image:url('assets/style-western.jpg')"></div>
-        <div class="card-body">
-          <span class="tag">Western / European</span>
-          <h3>层次与比例，决定空间稳重感</h3>
-          <p>分割清楚 · 阴影干净 · 比例明确</p>
-        </div>
-      </a>
-
-      <a class="card" href="materials-notes.html">
-        <div class="thumb" style="background-image:url('assets/style-chinese.jpg')"></div>
-        <div class="card-body">
-          <span class="tag">New Chinese</span>
-          <h3>收敛，比堆砌更难</h3>
-          <p>留白 · 深木 · 线条节制</p>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer>© ModuBrix · Space</footer>
-
-<script>
-(function(){
-  const rail = document.getElementById('styleRail');
-  const prev = document.getElementById('prevBtn');
-  const next = document.getElementById('nextBtn');
-  if(!rail) return;
-
-  function step(){
-    const card = rail.querySelector('.card');
-    return card ? card.getBoundingClientRect().width + 14 : 300;
-  }
-
-  prev.onclick = ()=> rail.scrollBy({left:-step(), behavior:'smooth'});
-  next.onclick = ()=> rail.scrollBy({left: step(), behavior:'smooth'});
-
-  let down=false, startX=0, startScroll=0;
-  rail.addEventListener('pointerdown', e=>{
-    down=true;
-    rail.setPointerCapture(e.pointerId);
-    startX=e.clientX;
-    startScroll=rail.scrollLeft;
-  });
-  rail.addEventListener('pointermove', e=>{
-    if(!down) return;
-    rail.scrollLeft = startScroll - (e.clientX-startX);
-  });
-  rail.addEventListener('pointerup', ()=> down=false);
-  rail.addEventListener('pointercancel', ()=> down=false);
-})();
-</script>
-
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+  <script src="assets/site.js"></script>
 </body>
 </html>
