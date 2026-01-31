@@ -1,188 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>ModuBrix · Space</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background:#0e1114;
-      color:#eaeaea;
-      margin:0;
-      line-height:1.7;
-    }
-    header {
-      padding:40px 20px;
-      border-bottom:1px solid #222;
-    }
-    nav {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      max-width:960px;
-      margin:0 auto;
-    }
-    nav strong {
-      font-size:18px;
-    }
-    .lang button {
-      background:none;
-      border:1px solid #444;
-      color:#aaa;
-      padding:6px 10px;
-      margin-left:6px;
-      cursor:pointer;
-    }
-    .lang button.active {
-      color:#0fb9b1;
-      border-color:#0fb9b1;
-    }
-    main {
-      max-width:960px;
-      margin:0 auto;
-      padding:40px 20px;
-    }
-    section {
-      margin-bottom:64px;
-    }
-    h1, h2 {
-      font-weight:600;
-    }
-    h1 {
-      font-size:32px;
-    }
-    h2 {
-      font-size:22px;
-      margin-bottom:12px;
-    }
-    p {
-      color:#cfcfcf;
-    }
-    .note {
-      border-left:3px solid #0fb9b1;
-      padding-left:14px;
-      margin-top:14px;
-    }
-    footer {
-      border-top:1px solid #222;
-      padding:30px 20px;
-      text-align:center;
-      color:#777;
-      font-size:14px;
-    }
-  </style>
+<meta charset="utf-8">
+<title>ModuBrix · Space</title>
+<link rel="stylesheet" href="style.css">
+<script src="lang.js"></script>
 </head>
 <body>
 
 <header>
-  <nav>
-    <strong>ModuBrix · Space</strong>
-    <div class="lang">
-      <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
-      <button id="btnZH" onclick="setLang('zh')">中文</button>
-    </div>
-  </nav>
+<nav>
+  <strong>ModuBrix · Space</strong>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="consult.html">Consult</a>
+    <a href="materials.html">Materials</a>
+    <a href="materials-notes.html">Notes</a>
+    <a href="reference.html">Reference</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="lang">
+    <button id="btn-zh" onclick="setLang('zh')">中文</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
 </header>
 
 <main>
+<h1 data-zh="槟城本地 · 定制内装顾问"
+    data-en="Penang-based Custom Interior Fit-Out Consultant"></h1>
 
-<section>
-  <h1 data-en="Penang-based Custom Interior Fit-Out Consultant"
-      data-zh="槟城本地 · 定制内装顾问">
-  </h1>
+<p data-zh="我们不是为了赶工期而做内装，而是为了把空间做得真正舒服、耐用、少后悔。"
+   data-en="We focus on thoughtful interior decisions, long-term comfort, and doing things properly."></p>
 
-  <p data-en="We focus on thoughtful decision-making, material integration, and practical execution. We do not rush projects. We care about comfort, long-term use, and doing things properly."
-     data-zh="我们专注于判断、材料整合与实际落地。不赶工期，更在意长期使用的舒适度，把事情做对。">
-  </p>
-
-  <p class="note"
-     data-en="Custom work takes time. We would rather slow down and do it right."
-     data-zh="定制需要时间，我们宁愿慢一点，也要把事情做对。">
-  </p>
-</section>
-
-<section>
-  <h2 data-en="Consult · How We Help You Decide"
-      data-zh="Consult · 我们如何协助你做决定"></h2>
-
-  <p data-en="Most interior problems are not about whether something can be done, but whether it should be done, when to do it, and whether it will cause regret later."
-     data-zh="内装里真正困难的，往往不是能不能做，而是要不要做、什么时候做、以后会不会后悔。">
-  </p>
-
-  <p data-en="Our role is not to decide for you, but to think through decisions together at every critical point."
-     data-zh="我们的角色不是替你做决定，而是在每一个关键节点，陪你把事情想清楚。">
-  </p>
-
-  <p data-en="We focus on usability, comfort, maintenance, and long-term practicality rather than visual impact alone."
-     data-zh="我们更关注使用、舒适、维护与长期实用性，而不仅仅是外观。">
-  </p>
-</section>
-
-<section>
-  <h2 data-en="Materials Notes · How We Think About Materials"
-      data-zh="Materials Notes · 材料判断笔记"></h2>
-
-  <p data-en="This is not a product catalogue. These notes reflect how we evaluate materials in real interior use."
-     data-zh="这不是产品目录，而是我们在实际内装中判断材料的方式。">
-  </p>
-
-  <p class="note"
-     data-en="Materials should feel right to use, not just look good on day one."
-     data-zh="材料不只是第一天好看，而是每天用得顺。">
-  </p>
-
-  <p data-en="We consider durability, maintenance, consistency, and whether something is truly worth customising."
-     data-zh="我们会考虑耐用度、维护方式、一致性，以及是否真的值得定制。">
-  </p>
-</section>
-
-<section>
-  <h2 data-en="Execution · Practical Follow-through"
-      data-zh="Execution · 实际落地"></h2>
-
-  <p data-en="We do not stop at advice. Where required, we assist with coordination, material integration, and execution follow-through."
-     data-zh="我们不是只给建议就离开，而是在需要时协助跟进与协调。">
-  </p>
-
-  <p data-en="Communication stays direct. No unnecessary layers or departments."
-     data-zh="沟通保持直接清晰，没有多余的层级。">
-  </p>
-</section>
-
-<section>
-  <h2 data-en="Contact · Start with a Conversation"
-      data-zh="Contact · 从对话开始"></h2>
-
-  <p data-en="If you would like to think through your space carefully, we would be glad to hear your ideas."
-     data-zh="如果你愿意慢慢把空间想清楚，我们很乐意听你分享想法。">
-  </p>
-
-  <p class="note"
-     data-en="No pressure. A conversation is always a good start."
-     data-zh="不急着决定，先聊聊也可以。">
-  </p>
-
-  <p>Email: modubrix@gmail.com<br>
-     SSM: 202503115039 (IP0608413-U)</p>
-</section>
-
+<div class="note"
+ data-zh="定制需要时间，我们宁愿慢一点，也要把事情做对。"
+ data-en="Custom work takes time. We would rather slow down and do it right."></div>
 </main>
 
-<footer>
-  © ModuBrix · Space
-</footer>
-
-<script>
-function setLang(lang) {
-  document.querySelectorAll('[data-en]').forEach(el => {
-    el.textContent = el.getAttribute('data-' + lang);
-  });
-  document.getElementById('btnEN').classList.toggle('active', lang === 'en');
-  document.getElementById('btnZH').classList.toggle('active', lang === 'zh');
-}
-setLang('en');
-</script>
-
+<footer>© ModuBrix · Space</footer>
 </body>
 </html>
