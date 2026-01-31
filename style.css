@@ -8,44 +8,76 @@ body {
 
 header {
   border-bottom:1px solid #222;
+  position: sticky;
+  top: 0;
+  background: rgba(14,17,20,0.92);
+  backdrop-filter: blur(8px);
+  z-index: 50;
 }
 
 nav {
   max-width:1100px;
   margin:auto;
-  padding:24px 20px;
+  padding:18px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-}
-
-nav a {
-  color:#aaa;
-  text-decoration:none;
-  margin-right:18px;
-}
-
-nav a:hover {
-  color:#0fb9b1;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 nav strong {
   color:#fff;
   font-size:18px;
+  letter-spacing: 0.2px;
+}
+
+.navlinks {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap: 6px;
+}
+
+nav a {
+  color:#aaa;
+  text-decoration:none;
+  padding:8px 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+nav a:hover {
+  color:#0fb9b1;
+  border-color:#243b3a;
+}
+
+/* 当前页高亮 */
+nav a.active {
+  color:#0fb9b1;
+  border-color:#0fb9b1;
+  background: rgba(15,185,177,0.08);
+}
+
+.lang {
+  display:flex;
+  align-items:center;
+  gap: 6px;
 }
 
 .lang button {
   background:none;
   border:1px solid #444;
   color:#aaa;
-  padding:5px 10px;
-  margin-left:6px;
+  padding:7px 10px;
+  border-radius: 10px;
   cursor:pointer;
 }
 
 .lang button.active {
   color:#0fb9b1;
   border-color:#0fb9b1;
+  background: rgba(15,185,177,0.08);
 }
 
 main {
@@ -54,14 +86,18 @@ main {
   padding:60px 20px;
 }
 
-h1 { font-size:34px; }
+h1 { font-size:34px; margin-top: 0; }
 h2 { font-size:24px; margin-top:50px; }
+
+p { color:#cfcfcf; }
 
 .note {
   border-left:3px solid #0fb9b1;
-  padding-left:14px;
+  padding:14px 14px 14px 14px;
+  border-radius: 12px;
   margin:20px 0;
-  color:#cfdede;
+  background: rgba(255,255,255,0.02);
+  color:#cfe7e6;
 }
 
 footer {
@@ -71,3 +107,36 @@ footer {
   color:#777;
   font-size:14px;
 }
+
+/* 列表/卡片样式：用于 Notes 列表 */
+.list {
+  display:flex;
+  flex-direction:column;
+  gap: 12px;
+  margin-top: 18px;
+}
+.item {
+  border:1px solid #222;
+  border-radius: 14px;
+  padding: 16px;
+  background: rgba(255,255,255,0.02);
+}
+.item a {
+  color:#eaeaea;
+  text-decoration:none;
+}
+.item a:hover {
+  color:#0fb9b1;
+}
+.item .meta {
+  color:#9a9a9a;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+/* 详情页顶部：返回 */
+.back a {
+  color:#aaa;
+  text-decoration:none;
+}
+.back a:hover { color:#0fb9b1; }
