@@ -3,40 +3,121 @@
 <head>
 <meta charset="utf-8">
 <title>ModuBrix · Space</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
 <script src="lang.js"></script>
+<style>
+  .hero-actions { margin-top:22px; display:flex; gap:12px; flex-wrap:wrap; }
+  .btn {
+    display:inline-block;
+    padding:10px 14px;
+    border:1px solid #444;
+    color:#ddd;
+    text-decoration:none;
+    border-radius:10px;
+  }
+  .btn:hover { border-color:#0fb9b1; color:#0fb9b1; }
+  .grid {
+    margin-top:34px;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:14px;
+  }
+  .card {
+    border:1px solid #222;
+    border-radius:14px;
+    padding:16px;
+    background: rgba(255,255,255,0.02);
+  }
+  .card h3 { margin:0 0 6px 0; font-size:16px; color:#fff; }
+  .muted { color:#bdbdbd; }
+</style>
 </head>
 <body>
 
 <header>
-<nav>
-  <strong>ModuBrix · Space</strong>
-  <div>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="consult.html">Consult</a>
-    <a href="materials.html">Materials</a>
-    <a href="materials-notes.html">Notes</a>
-    <a href="reference.html">Reference</a>
-    <a href="contact.html">Contact</a>
-  </div>
-  <div class="lang">
-    <button id="btn-zh" onclick="setLang('zh')">中文</button>
-    <button id="btn-en" onclick="setLang('en')">EN</button>
-  </div>
-</nav>
+  <nav>
+    <strong>ModuBrix · Space</strong>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="consult.html">Consult</a>
+      <a href="materials.html">Materials</a>
+      <a href="materials-notes.html">Notes</a>
+      <a href="reference.html">Reference</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="lang">
+      <button id="btn-zh" onclick="setLang('zh')">中文</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </nav>
 </header>
 
 <main>
-<h1 data-zh="槟城本地 · 定制内装顾问"
-    data-en="Penang-based Custom Interior Fit-Out Consultant"></h1>
+  <h1 data-zh="槟城本地 · 小而精的定制内装顾问"
+      data-en="Penang-based · Small, Focused Interior Fit-Out Consultant"></h1>
 
-<p data-zh="我们不是为了赶工期而做内装，而是为了把空间做得真正舒服、耐用、少后悔。"
-   data-en="We focus on thoughtful interior decisions, long-term comfort, and doing things properly."></p>
+  <p class="muted"
+     data-zh="ModuBrix 是一家位于槟城的定制内装顾问工作室。我们不以赶工为目标，更在意空间完成后是否真的舒服、耐用、少后悔。"
+     data-en="ModuBrix is a Penang-based interior fit-out consultancy. We don’t aim to rush. We care about comfort, durability, and fewer regrets after completion."></p>
 
-<div class="note"
- data-zh="定制需要时间，我们宁愿慢一点，也要把事情做对。"
- data-en="Custom work takes time. We would rather slow down and do it right."></div>
+  <div class="note"
+       data-zh="定制需要时间。我们宁愿慢一点，也要把事情做对。"
+       data-en="Custom work takes time. We would rather slow down and do it right."></div>
+
+  <div class="hero-actions">
+    <a class="btn" href="consult.html"
+       data-zh="了解我们如何协助你做决定"
+       data-en="See How We Help You Decide"></a>
+
+    <a class="btn" href="materials.html"
+       data-zh="了解我们怎么看材料与构成"
+       data-en="How We Think About Materials"></a>
+
+    <a class="btn" href="materials-notes.html"
+       data-zh="阅读材料判断笔记（内容库）"
+       data-en="Read Materials Notes (Library)"></a>
+
+    <a class="btn" href="reference.html"
+       data-zh="查看内装参考与可能性"
+       data-en="Browse Interior References"></a>
+  </div>
+
+  <h2 data-zh="我们做什么"
+      data-en="What We Do"></h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3 data-zh="Consult｜判断与取舍" data-en="Consult｜Judgment & Decisions"></h3>
+      <p class="muted"
+         data-zh="帮你在关键节点想清楚：要不要做、什么时候做、值不值得做。少走弯路，少后悔。"
+         data-en="We help you decide what to do, when to do it, and what’s worth it—so you avoid common mistakes and regrets."></p>
+    </div>
+
+    <div class="card">
+      <h3 data-zh="Materials｜材料整合" data-en="Materials｜Integration"></h3>
+      <p class="muted"
+         data-zh="材料不是越多越好。我们从使用、维护与一致性出发，协助你做更适合长期使用的选择。"
+         data-en="More materials are not always better. We focus on usability, maintenance, and consistency for long-term comfort."></p>
+    </div>
+
+    <div class="card">
+      <h3 data-zh="Execution｜偏执行落地" data-en="Execution｜Practical Follow-through"></h3>
+      <p class="muted"
+         data-zh="不只是建议。我们会在需要时协助跟进关键节点，减少返工与扯皮，让事情完成得更踏实。"
+         data-en="Not just advice. We help follow through at key points to reduce rework and confusion, so things get done properly."></p>
+    </div>
+  </div>
+
+  <h2 data-zh="适合谁"
+      data-en="Who We Are Suitable For"></h2>
+
+  <p data-zh="如果你重视舒适、长期使用、愿意花时间把空间想清楚，我们会很适合。"
+     data-en="If you value comfort, long-term usability, and thoughtful decisions, we are likely a good match."></p>
+
+  <p data-zh="如果你只追求最快、最低价、立刻开工，我们可能不适合你。"
+     data-en="If your priority is the fastest timeline and the lowest price, we may not be the right fit."></p>
 </main>
 
 <footer>© ModuBrix · Space</footer>
