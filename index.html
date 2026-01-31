@@ -6,39 +6,172 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
 <script src="lang.js"></script>
+
 <style>
-  .hero-actions { margin-top:22px; display:flex; gap:12px; flex-wrap:wrap; }
+  /* ===== Home layout ===== */
+  .hero {
+    padding-top: 10px;
+    padding-bottom: 18px;
+  }
+  .hero .kicker {
+    color:#9a9a9a;
+    margin-top: 10px;
+    max-width: 760px;
+  }
+  .hero-actions { margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
   .btn {
     display:inline-block;
     padding:10px 14px;
     border:1px solid #444;
     color:#ddd;
     text-decoration:none;
-    border-radius:10px;
-  }
-  .btn:hover { border-color:#0fb9b1; color:#0fb9b1; }
-  .grid {
-    margin-top:34px;
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap:14px;
-  }
-  .card {
-    border:1px solid #222;
-    border-radius:14px;
-    padding:16px;
+    border-radius:12px;
     background: rgba(255,255,255,0.02);
   }
-  .card h3 { margin:0 0 6px 0; font-size:16px; color:#fff; }
-  .muted { color:#bdbdbd; }
+  .btn:hover { border-color:#0fb9b1; color:#0fb9b1; }
+
+  /* ===== Style Cards Carousel ===== */
+  .deck-wrap {
+    margin-top: 26px;
+    border: 1px solid #222;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.02);
+    padding: 18px;
+  }
+  .deck-head {
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .deck-title {
+    margin:0;
+    font-size: 18px;
+    color:#fff;
+  }
+  .deck-sub {
+    margin:6px 0 0 0;
+    color:#9a9a9a;
+    font-size: 13px;
+    max-width: 700px;
+  }
+  .deck-controls {
+    display:flex;
+    align-items:center;
+    gap: 8px;
+  }
+  .arrow {
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    background: rgba(255,255,255,0.02);
+    color:#bbb;
+    cursor:pointer;
+  }
+  .arrow:hover {
+    border-color:#0fb9b1;
+    color:#0fb9b1;
+  }
+
+  .deck {
+    position: relative;
+  }
+  .rail {
+    display:flex;
+    gap: 12px;
+    overflow-x:auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .rail::-webkit-scrollbar { height: 8px; }
+  .rail::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 20px;
+  }
+
+  .card {
+    scroll-snap-align: start;
+    flex: 0 0 280px;
+    border: 1px solid #222;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.02);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .18s ease, border-color .18s ease;
+  }
+  .card:hover {
+    border-color:#0fb9b1;
+    transform: translateY(-2px);
+  }
+
+  /* 图片区域：先用“安全占位图”（无品牌无文字），以后你再换成你自己的图 */
+  .thumb {
+    height: 170px;
+    position: relative;
+    background: linear-gradient(135deg, rgba(15,185,177,0.18), rgba(255,255,255,0.02));
+  }
+  .thumb::after{
+    content:"";
+    position:absolute; inset:0;
+    background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.10), transparent 45%),
+                radial-gradient(circle at 70% 80%, rgba(15,185,177,0.14), transparent 55%);
+    pointer-events:none;
+  }
+
+  /* 不同风格给不同“气质色”——先靠色块建立感觉，后面换真实图也会很好看 */
+  .thumb.minimal { background: linear-gradient(135deg, rgba(200,200,200,0.10), rgba(15,185,177,0.06)); }
+  .thumb.nature  { background: linear-gradient(135deg, rgba(140,190,120,0.10), rgba(255,255,255,0.02)); }
+  .thumb.boho    { background: linear-gradient(135deg, rgba(210,140,90,0.14), rgba(120,90,200,0.06)); }
+  .thumb.medi    { background: linear-gradient(135deg, rgba(180,160,120,0.14), rgba(80,140,200,0.06)); }
+  .thumb.western { background: linear-gradient(135deg, rgba(180,180,180,0.10), rgba(120,120,160,0.07)); }
+  .thumb.chinese { background: linear-gradient(135deg, rgba(120,90,60,0.16), rgba(255,255,255,0.02)); }
+
+  .card-body {
+    padding: 14px 14px 16px 14px;
+  }
+  .tag {
+    display:inline-block;
+    font-size: 12px;
+    color:#9a9a9a;
+    border:1px solid #2a2a2a;
+    padding: 4px 9px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+    background: rgba(0,0,0,0.10);
+  }
+  .card-title {
+    margin:0;
+    font-size: 16px;
+    color:#fff;
+    line-height: 1.4;
+  }
+  .card-desc {
+    margin: 8px 0 0 0;
+    color:#bdbdbd;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .hint {
+    margin-top: 14px;
+    color:#8a8a8a;
+    font-size: 12px;
+  }
 </style>
 </head>
+
 <body>
 
 <header>
   <nav>
     <strong>ModuBrix · Space</strong>
-    <div>
+
+    <div class="navlinks">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="consult.html">Consult</a>
@@ -47,6 +180,7 @@
       <a href="reference.html">Reference</a>
       <a href="contact.html">Contact</a>
     </div>
+
     <div class="lang">
       <button id="btn-zh" onclick="setLang('zh')">中文</button>
       <button id="btn-en" onclick="setLang('en')">EN</button>
@@ -55,71 +189,214 @@
 </header>
 
 <main>
-  <h1 data-zh="槟城本地 · 小而精的定制内装顾问"
-      data-en="Penang-based · Small, Focused Interior Fit-Out Consultant"></h1>
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <h1 data-zh="槟城本地 · 小而精的定制内装顾问"
+        data-en="Penang-based · Small, Focused Interior Fit-Out Consultant">
+      槟城本地 · 小而精的定制内装顾问
+    </h1>
 
-  <p class="muted"
-     data-zh="ModuBrix 是一家位于槟城的定制内装顾问工作室。我们不以赶工为目标，更在意空间完成后是否真的舒服、耐用、少后悔。"
-     data-en="ModuBrix is a Penang-based interior fit-out consultancy. We don’t aim to rush. We care about comfort, durability, and fewer regrets after completion."></p>
+    <p class="kicker"
+       data-zh="我们用材料与构成去做判断。不是赶工，而是把空间做得真正舒服、耐用、少后悔。"
+       data-en="We consult through materials and execution. Not to rush—but to build spaces that feel comfortable, durable, and regret-free.">
+      我们用材料与构成去做判断。不是赶工，而是把空间做得真正舒服、耐用、少后悔。
+    </p>
 
-  <div class="note"
-       data-zh="定制需要时间。我们宁愿慢一点，也要把事情做对。"
-       data-en="Custom work takes time. We would rather slow down and do it right."></div>
+    <div class="hero-actions">
+      <a class="btn" href="consult.html"
+         data-zh="了解我们如何协助你做决定"
+         data-en="See How We Help You Decide">了解我们如何协助你做决定</a>
 
-  <div class="hero-actions">
-    <a class="btn" href="consult.html"
-       data-zh="了解我们如何协助你做决定"
-       data-en="See How We Help You Decide"></a>
+      <a class="btn" href="materials.html"
+         data-zh="了解我们怎么看材料与构成"
+         data-en="How We Think About Materials">了解我们怎么看材料与构成</a>
 
-    <a class="btn" href="materials.html"
-       data-zh="了解我们怎么看材料与构成"
-       data-en="How We Think About Materials"></a>
+      <a class="btn" href="materials-notes.html"
+         data-zh="进入 Materials Notes（判断库）"
+         data-en="Open Materials Notes (Library)">进入 Materials Notes（判断库）</a>
+    </div>
+  </section>
 
-    <a class="btn" href="materials-notes.html"
-       data-zh="阅读材料判断笔记（内容库）"
-       data-en="Read Materials Notes (Library)"></a>
+  <!-- ===== STYLE CARDS CAROUSEL ===== -->
+  <section class="deck-wrap">
+    <div class="deck-head">
+      <div>
+        <p class="deck-title"
+           data-zh="Style Preview · 风格观察卡"
+           data-en="Style Preview · Lens Cards"
+           style="margin:0;">
+          Style Preview · 风格观察卡
+        </p>
+        <p class="deck-sub"
+           data-zh="从你有感觉的风格开始。我们不卖风格，我们用材料与构成去判断：什么更耐看、什么更舒服、什么更能落地。"
+           data-en="Start from a style that resonates. We don’t sell styles—we use materials and construction logic to judge what feels better, lasts longer, and is executable.">
+          从你有感觉的风格开始。我们不卖风格，我们用材料与构成去判断：什么更耐看、什么更舒服、什么更能落地。
+        </p>
+      </div>
 
-    <a class="btn" href="reference.html"
-       data-zh="查看内装参考与可能性"
-       data-en="Browse Interior References"></a>
-  </div>
-
-  <h2 data-zh="我们做什么"
-      data-en="What We Do"></h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3 data-zh="Consult｜判断与取舍" data-en="Consult｜Judgment & Decisions"></h3>
-      <p class="muted"
-         data-zh="帮你在关键节点想清楚：要不要做、什么时候做、值不值得做。少走弯路，少后悔。"
-         data-en="We help you decide what to do, when to do it, and what’s worth it—so you avoid common mistakes and regrets."></p>
+      <div class="deck-controls">
+        <button class="arrow" id="prevBtn" aria-label="Previous">‹</button>
+        <button class="arrow" id="nextBtn" aria-label="Next">›</button>
+      </div>
     </div>
 
-    <div class="card">
-      <h3 data-zh="Materials｜材料整合" data-en="Materials｜Integration"></h3>
-      <p class="muted"
-         data-zh="材料不是越多越好。我们从使用、维护与一致性出发，协助你做更适合长期使用的选择。"
-         data-en="More materials are not always better. We focus on usability, maintenance, and consistency for long-term comfort."></p>
+    <div class="deck">
+      <div class="rail" id="styleRail">
+
+        <!-- Minimal / MUJI -->
+        <a class="card" href="materials-notes.html">
+          <div class="thumb minimal"></div>
+          <div class="card-body">
+            <span class="tag" data-zh="Minimal / MUJI" data-en="Minimal / MUJI">Minimal / MUJI</span>
+            <p class="card-title"
+               data-zh="克制，让材料自己说话"
+               data-en="Restraint lets materials speak.">
+              克制，让材料自己说话
+            </p>
+            <p class="card-desc"
+               data-zh="低反光 · 触感优先 · 少但用得久"
+               data-en="Low-glare · tactile-first · less but lasts longer">
+              低反光 · 触感优先 · 少但用得久
+            </p>
+          </div>
+        </a>
+
+        <!-- Nature / Organic -->
+        <a class="card" href="materials-notes.html">
+          <div class="thumb nature"></div>
+          <div class="card-body">
+            <span class="tag" data-zh="Nature / Organic" data-en="Nature / Organic">Nature / Organic</span>
+            <p class="card-title"
+               data-zh="不完美的纹理，反而更放松"
+               data-en="Imperfect textures feel calmer.">
+              不完美的纹理，反而更放松
+            </p>
+            <p class="card-desc"
+               data-zh="自然肌理 · 呼吸感 · 光影更柔"
+               data-en="Natural grain · breathable feel · softer light">
+              自然肌理 · 呼吸感 · 光影更柔
+            </p>
+          </div>
+        </a>
+
+        <!-- Bohemian -->
+        <a class="card" href="materials-notes.html">
+          <div class="thumb boho"></div>
+          <div class="card-body">
+            <span class="tag" data-zh="Bohemian" data-en="Bohemian">Bohemian</span>
+            <p class="card-title"
+               data-zh="混搭可以自由，但底层要稳定"
+               data-en="Mix freely, but keep the base stable.">
+              混搭可以自由，但底层要稳定
+            </p>
+            <p class="card-desc"
+               data-zh="多材质 · 手工感 · 但结构要稳"
+               data-en="Mixed materials · handmade feel · stable structure">
+              多材质 · 手工感 · 但结构要稳
+            </p>
+          </div>
+        </a>
+
+        <!-- Mediterranean -->
+        <a class="card" href="materials-notes.html">
+          <div class="thumb medi"></div>
+          <div class="card-body">
+            <span class="tag" data-zh="Mediterranean" data-en="Mediterranean">Mediterranean</span>
+            <p class="card-title"
+               data-zh="粗粝的表面，承载阳光与空气"
+               data-en="Textured surfaces hold sun & air.">
+              粗粝的表面，承载阳光与空气
+            </p>
+            <p class="card-desc"
+               data-zh="矿物感 · 粗细变化 · 更有温度"
+               data-en="Mineral feel · irregularity · warmer mood">
+              矿物感 · 粗细变化 · 更有温度
+            </p>
+          </div>
+        </a>
+
+        <!-- Western / European -->
+        <a class="card" href="materials-notes.html">
+          <div class="thumb western"></div>
+          <div class="card-body">
+            <span class="tag" data-zh="Western / European" data-en="Western / European">Western / European</span>
+            <p class="card-title"
+               data-zh="层次与比例，决定空间的稳重感"
+               data-en="Layers & proportions create weight.">
+              层次与比例，决定空间的稳重感
+            </p>
+            <p class="card-desc"
+               data-zh="分割清楚 · 收边明确 · 阴影干净"
+               data-en="Clear sections · clean edges · neat shadows">
+              分割清楚 · 收边明确 · 阴影干净
+            </p>
+          </div>
+        </a>
+
+        <!-- New Chinese -->
+        <a class="card" href="materials-notes.html">
+          <div class="thumb chinese"></div>
+          <div class="card-body">
+            <span class="tag" data-zh="New Chinese" data-en="New Chinese">New Chinese</span>
+            <p class="card-title"
+               data-zh="收敛，比堆砌更难"
+               data-en="Restraint is harder than layering.">
+              收敛，比堆砌更难
+            </p>
+            <p class="card-desc"
+               data-zh="留白 · 深木 · 线条节制"
+               data-en="Negative space · deep wood · restrained lines">
+              留白 · 深木 · 线条节制
+            </p>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="hint"
+           data-zh="提示：现在这些是“无品牌占位图”，你之后把每张卡片的图片换成你自己的抽象参考图，就会立刻变得高级。"
+           data-en="Tip: these are brand-safe placeholders. Replace each card’s image with your own abstract references and the deck becomes instantly premium.">
+        提示：现在这些是“无品牌占位图”，你之后把每张卡片的图片换成你自己的抽象参考图，就会立刻变得高级。
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <h3 data-zh="Execution｜偏执行落地" data-en="Execution｜Practical Follow-through"></h3>
-      <p class="muted"
-         data-zh="不只是建议。我们会在需要时协助跟进关键节点，减少返工与扯皮，让事情完成得更踏实。"
-         data-en="Not just advice. We help follow through at key points to reduce rework and confusion, so things get done properly."></p>
-    </div>
-  </div>
+  <!-- ===== NEXT SECTIONS (keep simple) ===== -->
+  <h2 data-zh="下一步从哪里开始" data-en="Where to Start Next">下一步从哪里开始</h2>
 
-  <h2 data-zh="适合谁"
-      data-en="Who We Are Suitable For"></h2>
+  <p data-zh="如果你想先建立判断体系：从 Materials Notes 开始。想先理解我们的做法：看 Consult。"
+     data-en="If you want a decision system first: start with Materials Notes. If you want how we work: see Consult.">
+    如果你想先建立判断体系：从 Materials Notes 开始。想先理解我们的做法：看 Consult。
+  </p>
 
-  <p data-zh="如果你重视舒适、长期使用、愿意花时间把空间想清楚，我们会很适合。"
-     data-en="If you value comfort, long-term usability, and thoughtful decisions, we are likely a good match."></p>
-
-  <p data-zh="如果你只追求最快、最低价、立刻开工，我们可能不适合你。"
-     data-en="If your priority is the fastest timeline and the lowest price, we may not be the right fit."></p>
 </main>
 
 <footer>© ModuBrix · Space</footer>
+
+<script>
+  // ===== Carousel controls (arrow click scroll) =====
+  (function() {
+    const rail = document.getElementById('styleRail');
+    const prev = document.getElementById('prevBtn');
+    const next = document.getElementById('nextBtn');
+    if (!rail || !prev || !next) return;
+
+    function cardWidth() {
+      const first = rail.querySelector('.card');
+      if (!first) return 300;
+      const rect = first.getBoundingClientRect();
+      return rect.width + 12; // include gap
+    }
+
+    prev.addEventListener('click', () => {
+      rail.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
+    });
+
+    next.addEventListener('click', () => {
+      rail.scrollBy({ left: cardWidth(), behavior: 'smooth' });
+    });
+  })();
+</script>
+
 </body>
 </html>
