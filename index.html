@@ -1,167 +1,153 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hans">
 <head>
 <meta charset="utf-8">
 <title>ModuBrix · Space</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" href="style.css">
 <script src="lang.js"></script>
 
 <style>
-  /* ===== Home layout ===== */
-  .hero {
-    padding-top: 10px;
-    padding-bottom: 18px;
-  }
-  .hero .kicker {
-    color:#9a9a9a;
-    margin-top: 10px;
-    max-width: 760px;
-  }
-  .hero-actions { margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
-  .btn {
-    display:inline-block;
-    padding:10px 14px;
-    border:1px solid #444;
-    color:#ddd;
-    text-decoration:none;
-    border-radius:12px;
-    background: rgba(255,255,255,0.02);
-  }
-  .btn:hover { border-color:#0fb9b1; color:#0fb9b1; }
+/* =========================
+   HOME – STYLE CARDS CAROUSEL
+   ========================= */
 
-  /* ===== Style Cards Carousel ===== */
-  .deck-wrap {
-    margin-top: 26px;
-    border: 1px solid #222;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.02);
-    padding: 18px;
-  }
-  .deck-head {
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 14px;
-  }
-  .deck-title {
-    margin:0;
-    font-size: 18px;
-    color:#fff;
-  }
-  .deck-sub {
-    margin:6px 0 0 0;
-    color:#9a9a9a;
-    font-size: 13px;
-    max-width: 700px;
-  }
-  .deck-controls {
-    display:flex;
-    align-items:center;
-    gap: 8px;
-  }
-  .arrow {
-    width: 34px;
-    height: 34px;
-    border-radius: 12px;
-    border: 1px solid #333;
-    background: rgba(255,255,255,0.02);
-    color:#bbb;
-    cursor:pointer;
-  }
-  .arrow:hover {
-    border-color:#0fb9b1;
-    color:#0fb9b1;
-  }
+.hero{
+  padding: 20px 0 10px 0;
+}
 
-  .deck {
-    position: relative;
-  }
-  .rail {
-    display:flex;
-    gap: 12px;
-    overflow-x:auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 10px;
-    -webkit-overflow-scrolling: touch;
-  }
-  .rail::-webkit-scrollbar { height: 8px; }
-  .rail::-webkit-scrollbar-thumb {
-    background: #222;
-    border-radius: 20px;
-  }
+.hero p{
+  max-width: 760px;
+  color:#bdbdbd;
+}
 
-  .card {
-    scroll-snap-align: start;
-    flex: 0 0 280px;
-    border: 1px solid #222;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.02);
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    transition: transform .18s ease, border-color .18s ease;
-  }
-  .card:hover {
-    border-color:#0fb9b1;
-    transform: translateY(-2px);
-  }
+.deck-wrap{
+  margin-top: 28px;
+  padding: 18px;
+  border-radius: 20px;
+  border:1px solid #222;
+  background: rgba(255,255,255,0.02);
+}
 
-  /* 图片区域：先用“安全占位图”（无品牌无文字），以后你再换成你自己的图 */
-  .thumb {
-    height: 170px;
-    position: relative;
-    background: linear-gradient(135deg, rgba(15,185,177,0.18), rgba(255,255,255,0.02));
-  }
-  .thumb::after{
-    content:"";
-    position:absolute; inset:0;
-    background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.10), transparent 45%),
-                radial-gradient(circle at 70% 80%, rgba(15,185,177,0.14), transparent 55%);
-    pointer-events:none;
-  }
+.deck-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:16px;
+  flex-wrap:wrap;
+}
 
-  /* 不同风格给不同“气质色”——先靠色块建立感觉，后面换真实图也会很好看 */
-  .thumb.minimal { background: linear-gradient(135deg, rgba(200,200,200,0.10), rgba(15,185,177,0.06)); }
-  .thumb.nature  { background: linear-gradient(135deg, rgba(140,190,120,0.10), rgba(255,255,255,0.02)); }
-  .thumb.boho    { background: linear-gradient(135deg, rgba(210,140,90,0.14), rgba(120,90,200,0.06)); }
-  .thumb.medi    { background: linear-gradient(135deg, rgba(180,160,120,0.14), rgba(80,140,200,0.06)); }
-  .thumb.western { background: linear-gradient(135deg, rgba(180,180,180,0.10), rgba(120,120,160,0.07)); }
-  .thumb.chinese { background: linear-gradient(135deg, rgba(120,90,60,0.16), rgba(255,255,255,0.02)); }
+.deck-head h2{
+  margin:0;
+  font-size:18px;
+}
 
-  .card-body {
-    padding: 14px 14px 16px 14px;
-  }
-  .tag {
-    display:inline-block;
-    font-size: 12px;
-    color:#9a9a9a;
-    border:1px solid #2a2a2a;
-    padding: 4px 9px;
-    border-radius: 999px;
-    margin-bottom: 10px;
-    background: rgba(0,0,0,0.10);
-  }
-  .card-title {
-    margin:0;
-    font-size: 16px;
-    color:#fff;
-    line-height: 1.4;
-  }
-  .card-desc {
-    margin: 8px 0 0 0;
-    color:#bdbdbd;
-    font-size: 13px;
-    line-height: 1.7;
-  }
+.deck-head p{
+  margin:6px 0 0 0;
+  font-size:13px;
+  color:#9a9a9a;
+  max-width:720px;
+}
 
-  .hint {
-    margin-top: 14px;
-    color:#8a8a8a;
-    font-size: 12px;
-  }
+.deck-controls{
+  display:flex;
+  gap:8px;
+}
+
+.deck-controls button{
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  border:1px solid #333;
+  background:rgba(255,255,255,0.02);
+  color:#bbb;
+  cursor:pointer;
+}
+.deck-controls button:hover{
+  color:#0fb9b1;
+  border-color:#0fb9b1;
+}
+
+/* IG-like rail */
+.deck{
+  margin-top:14px;
+}
+
+.rail{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+
+  padding:6px 18px 12px 18px;
+
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.rail::-webkit-scrollbar{ display:none; }
+
+.card{
+  flex:0 0 78%;
+  max-width:340px;
+  scroll-snap-align:center;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid #222;
+  background:rgba(255,255,255,0.02);
+  text-decoration:none;
+  color:inherit;
+  transition:transform .18s ease, border-color .18s ease;
+}
+@media (min-width:900px){
+  .card{ flex-basis:300px; }
+}
+
+.card:hover{
+  transform:translateY(-2px);
+  border-color:#0fb9b1;
+}
+
+.thumb{
+  height:200px;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
+.thumb::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.25));
+}
+
+.card-body{
+  padding:14px 14px 16px 14px;
+}
+
+.tag{
+  display:inline-block;
+  font-size:12px;
+  color:#9a9a9a;
+  border:1px solid #2a2a2a;
+  padding:4px 9px;
+  border-radius:999px;
+  margin-bottom:10px;
+}
+
+.card-body h3{
+  margin:0;
+  font-size:16px;
+  color:#fff;
+}
+
+.card-body p{
+  margin:8px 0 0 0;
+  font-size:13px;
+  line-height:1.7;
+  color:#bdbdbd;
+}
 </style>
 </head>
 
@@ -189,213 +175,136 @@
 </header>
 
 <main>
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <h1 data-zh="槟城本地 · 小而精的定制内装顾问"
-        data-en="Penang-based · Small, Focused Interior Fit-Out Consultant">
-      槟城本地 · 小而精的定制内装顾问
-    </h1>
 
-    <p class="kicker"
-       data-zh="我们用材料与构成去做判断。不是赶工，而是把空间做得真正舒服、耐用、少后悔。"
-       data-en="We consult through materials and execution. Not to rush—but to build spaces that feel comfortable, durable, and regret-free.">
-      我们用材料与构成去做判断。不是赶工，而是把空间做得真正舒服、耐用、少后悔。
-    </p>
+<section class="hero">
+  <h1
+    data-zh="槟城本地 · 小而精的定制内装顾问"
+    data-en="Penang-based · Small, Focused Interior Fit-Out Consultant">
+    槟城本地 · 小而精的定制内装顾问
+  </h1>
 
-    <div class="hero-actions">
-      <a class="btn" href="consult.html"
-         data-zh="了解我们如何协助你做决定"
-         data-en="See How We Help You Decide">了解我们如何协助你做决定</a>
-
-      <a class="btn" href="materials.html"
-         data-zh="了解我们怎么看材料与构成"
-         data-en="How We Think About Materials">了解我们怎么看材料与构成</a>
-
-      <a class="btn" href="materials-notes.html"
-         data-zh="进入 Materials Notes（判断库）"
-         data-en="Open Materials Notes (Library)">进入 Materials Notes（判断库）</a>
-    </div>
-  </section>
-
-  <!-- ===== STYLE CARDS CAROUSEL ===== -->
-  <section class="deck-wrap">
-    <div class="deck-head">
-      <div>
-        <p class="deck-title"
-           data-zh="Style Preview · 风格观察卡"
-           data-en="Style Preview · Lens Cards"
-           style="margin:0;">
-          Style Preview · 风格观察卡
-        </p>
-        <p class="deck-sub"
-           data-zh="从你有感觉的风格开始。我们不卖风格，我们用材料与构成去判断：什么更耐看、什么更舒服、什么更能落地。"
-           data-en="Start from a style that resonates. We don’t sell styles—we use materials and construction logic to judge what feels better, lasts longer, and is executable.">
-          从你有感觉的风格开始。我们不卖风格，我们用材料与构成去判断：什么更耐看、什么更舒服、什么更能落地。
-        </p>
-      </div>
-
-      <div class="deck-controls">
-        <button class="arrow" id="prevBtn" aria-label="Previous">‹</button>
-        <button class="arrow" id="nextBtn" aria-label="Next">›</button>
-      </div>
-    </div>
-
-    <div class="deck">
-      <div class="rail" id="styleRail">
-
-        <!-- Minimal / MUJI -->
-        <a class="card" href="materials-notes.html">
-          <div class="thumb minimal"></div>
-          <div class="card-body">
-            <span class="tag" data-zh="Minimal / MUJI" data-en="Minimal / MUJI">Minimal / MUJI</span>
-            <p class="card-title"
-               data-zh="克制，让材料自己说话"
-               data-en="Restraint lets materials speak.">
-              克制，让材料自己说话
-            </p>
-            <p class="card-desc"
-               data-zh="低反光 · 触感优先 · 少但用得久"
-               data-en="Low-glare · tactile-first · less but lasts longer">
-              低反光 · 触感优先 · 少但用得久
-            </p>
-          </div>
-        </a>
-
-        <!-- Nature / Organic -->
-        <a class="card" href="materials-notes.html">
-          <div class="thumb nature"></div>
-          <div class="card-body">
-            <span class="tag" data-zh="Nature / Organic" data-en="Nature / Organic">Nature / Organic</span>
-            <p class="card-title"
-               data-zh="不完美的纹理，反而更放松"
-               data-en="Imperfect textures feel calmer.">
-              不完美的纹理，反而更放松
-            </p>
-            <p class="card-desc"
-               data-zh="自然肌理 · 呼吸感 · 光影更柔"
-               data-en="Natural grain · breathable feel · softer light">
-              自然肌理 · 呼吸感 · 光影更柔
-            </p>
-          </div>
-        </a>
-
-        <!-- Bohemian -->
-        <a class="card" href="materials-notes.html">
-          <div class="thumb boho"></div>
-          <div class="card-body">
-            <span class="tag" data-zh="Bohemian" data-en="Bohemian">Bohemian</span>
-            <p class="card-title"
-               data-zh="混搭可以自由，但底层要稳定"
-               data-en="Mix freely, but keep the base stable.">
-              混搭可以自由，但底层要稳定
-            </p>
-            <p class="card-desc"
-               data-zh="多材质 · 手工感 · 但结构要稳"
-               data-en="Mixed materials · handmade feel · stable structure">
-              多材质 · 手工感 · 但结构要稳
-            </p>
-          </div>
-        </a>
-
-        <!-- Mediterranean -->
-        <a class="card" href="materials-notes.html">
-          <div class="thumb medi"></div>
-          <div class="card-body">
-            <span class="tag" data-zh="Mediterranean" data-en="Mediterranean">Mediterranean</span>
-            <p class="card-title"
-               data-zh="粗粝的表面，承载阳光与空气"
-               data-en="Textured surfaces hold sun & air.">
-              粗粝的表面，承载阳光与空气
-            </p>
-            <p class="card-desc"
-               data-zh="矿物感 · 粗细变化 · 更有温度"
-               data-en="Mineral feel · irregularity · warmer mood">
-              矿物感 · 粗细变化 · 更有温度
-            </p>
-          </div>
-        </a>
-
-        <!-- Western / European -->
-        <a class="card" href="materials-notes.html">
-          <div class="thumb western"></div>
-          <div class="card-body">
-            <span class="tag" data-zh="Western / European" data-en="Western / European">Western / European</span>
-            <p class="card-title"
-               data-zh="层次与比例，决定空间的稳重感"
-               data-en="Layers & proportions create weight.">
-              层次与比例，决定空间的稳重感
-            </p>
-            <p class="card-desc"
-               data-zh="分割清楚 · 收边明确 · 阴影干净"
-               data-en="Clear sections · clean edges · neat shadows">
-              分割清楚 · 收边明确 · 阴影干净
-            </p>
-          </div>
-        </a>
-
-        <!-- New Chinese -->
-        <a class="card" href="materials-notes.html">
-          <div class="thumb chinese"></div>
-          <div class="card-body">
-            <span class="tag" data-zh="New Chinese" data-en="New Chinese">New Chinese</span>
-            <p class="card-title"
-               data-zh="收敛，比堆砌更难"
-               data-en="Restraint is harder than layering.">
-              收敛，比堆砌更难
-            </p>
-            <p class="card-desc"
-               data-zh="留白 · 深木 · 线条节制"
-               data-en="Negative space · deep wood · restrained lines">
-              留白 · 深木 · 线条节制
-            </p>
-          </div>
-        </a>
-
-      </div>
-
-      <div class="hint"
-           data-zh="提示：现在这些是“无品牌占位图”，你之后把每张卡片的图片换成你自己的抽象参考图，就会立刻变得高级。"
-           data-en="Tip: these are brand-safe placeholders. Replace each card’s image with your own abstract references and the deck becomes instantly premium.">
-        提示：现在这些是“无品牌占位图”，你之后把每张卡片的图片换成你自己的抽象参考图，就会立刻变得高级。
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== NEXT SECTIONS (keep simple) ===== -->
-  <h2 data-zh="下一步从哪里开始" data-en="Where to Start Next">下一步从哪里开始</h2>
-
-  <p data-zh="如果你想先建立判断体系：从 Materials Notes 开始。想先理解我们的做法：看 Consult。"
-     data-en="If you want a decision system first: start with Materials Notes. If you want how we work: see Consult.">
-    如果你想先建立判断体系：从 Materials Notes 开始。想先理解我们的做法：看 Consult。
+  <p
+    data-zh="我们不卖风格，而是通过材料与构成，协助你做更耐看、更舒服、更少后悔的决定。"
+    data-en="We don’t sell styles. We consult through materials and construction logic—to help you make decisions that feel better, last longer, and regret less.">
+    我们不卖风格，而是通过材料与构成，协助你做更耐看、更舒服、更少后悔的决定。
   </p>
+</section>
+
+<section class="deck-wrap">
+  <div class="deck-head">
+    <div>
+      <h2
+        data-zh="Style Preview · 风格观察卡"
+        data-en="Style Preview · Lens Cards">
+        Style Preview · 风格观察卡
+      </h2>
+      <p
+        data-zh="从你有感觉的风格开始。我们用材料与构成逻辑去判断，而不是用标签。"
+        data-en="Start from a style that resonates. We judge through materials and construction logic—not labels.">
+        从你有感觉的风格开始。我们用材料与构成逻辑去判断，而不是用标签。
+      </p>
+    </div>
+
+    <div class="deck-controls">
+      <button id="prevBtn">‹</button>
+      <button id="nextBtn">›</button>
+    </div>
+  </div>
+
+  <div class="deck">
+    <div class="rail" id="styleRail">
+
+      <a class="card" href="materials-notes.html">
+        <div class="thumb" style="background-image:url('assets/style-minimal.jpg')"></div>
+        <div class="card-body">
+          <span class="tag">Minimal / MUJI</span>
+          <h3>克制，让材料自己说话</h3>
+          <p>低反光 · 触感优先 · 少但用得久</p>
+        </div>
+      </a>
+
+      <a class="card" href="materials-notes.html">
+        <div class="thumb" style="background-image:url('assets/style-nature.jpg')"></div>
+        <div class="card-body">
+          <span class="tag">Nature / Organic</span>
+          <h3>不完美的纹理，反而更放松</h3>
+          <p>自然肌理 · 呼吸感 · 柔和光影</p>
+        </div>
+      </a>
+
+      <a class="card" href="materials-notes.html">
+        <div class="thumb" style="background-image:url('assets/style-boho.jpg')"></div>
+        <div class="card-body">
+          <span class="tag">Bohemian</span>
+          <h3>混搭可以自由，但底层要稳定</h3>
+          <p>多材质 · 手工感 · 结构要稳</p>
+        </div>
+      </a>
+
+      <a class="card" href="materials-notes.html">
+        <div class="thumb" style="background-image:url('assets/style-mediterranean.jpg')"></div>
+        <div class="card-body">
+          <span class="tag">Mediterranean</span>
+          <h3>粗粝的表面，承载阳光与空气</h3>
+          <p>矿物感 · 不规则 · 有温度</p>
+        </div>
+      </a>
+
+      <a class="card" href="materials-notes.html">
+        <div class="thumb" style="background-image:url('assets/style-western.jpg')"></div>
+        <div class="card-body">
+          <span class="tag">Western / European</span>
+          <h3>层次与比例，决定空间稳重感</h3>
+          <p>分割清楚 · 阴影干净 · 比例明确</p>
+        </div>
+      </a>
+
+      <a class="card" href="materials-notes.html">
+        <div class="thumb" style="background-image:url('assets/style-chinese.jpg')"></div>
+        <div class="card-body">
+          <span class="tag">New Chinese</span>
+          <h3>收敛，比堆砌更难</h3>
+          <p>留白 · 深木 · 线条节制</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
 
 </main>
 
 <footer>© ModuBrix · Space</footer>
 
 <script>
-  // ===== Carousel controls (arrow click scroll) =====
-  (function() {
-    const rail = document.getElementById('styleRail');
-    const prev = document.getElementById('prevBtn');
-    const next = document.getElementById('nextBtn');
-    if (!rail || !prev || !next) return;
+(function(){
+  const rail = document.getElementById('styleRail');
+  const prev = document.getElementById('prevBtn');
+  const next = document.getElementById('nextBtn');
+  if(!rail) return;
 
-    function cardWidth() {
-      const first = rail.querySelector('.card');
-      if (!first) return 300;
-      const rect = first.getBoundingClientRect();
-      return rect.width + 12; // include gap
-    }
+  function step(){
+    const card = rail.querySelector('.card');
+    return card ? card.getBoundingClientRect().width + 14 : 300;
+  }
 
-    prev.addEventListener('click', () => {
-      rail.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
-    });
+  prev.onclick = ()=> rail.scrollBy({left:-step(), behavior:'smooth'});
+  next.onclick = ()=> rail.scrollBy({left: step(), behavior:'smooth'});
 
-    next.addEventListener('click', () => {
-      rail.scrollBy({ left: cardWidth(), behavior: 'smooth' });
-    });
-  })();
+  let down=false, startX=0, startScroll=0;
+  rail.addEventListener('pointerdown', e=>{
+    down=true;
+    rail.setPointerCapture(e.pointerId);
+    startX=e.clientX;
+    startScroll=rail.scrollLeft;
+  });
+  rail.addEventListener('pointermove', e=>{
+    if(!down) return;
+    rail.scrollLeft = startScroll - (e.clientX-startX);
+  });
+  rail.addEventListener('pointerup', ()=> down=false);
+  rail.addEventListener('pointercancel', ()=> down=false);
+})();
 </script>
 
 </body>
