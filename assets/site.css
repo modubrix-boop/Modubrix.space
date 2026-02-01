@@ -285,3 +285,98 @@ a{color:inherit; text-decoration:none}
   .hero h2{ font-size: 28px; }
   .card{ min-width: 290px; }
 }
+/* =========================
+   Card strip premium fix
+   (targets the section in your screenshot)
+   ========================= */
+
+/* 1) 去掉“粗滚动条廉价感”：隐藏滚动条，但仍可滑动 */
+.cards{
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE/Edge old */
+}
+.cards::-webkit-scrollbar{ height:0; width:0; }  /* Chrome/Safari */
+
+/* 2) 让卡片更像“画廊”，不是“电商列表” */
+.cards{
+  padding: 18px 18px 22px;
+  gap: 18px;
+  scroll-snap-type: x mandatory;
+}
+
+/* 3) 卡片更克制：去掉塑料感边框 + 过度阴影 */
+.card{
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.02);
+  box-shadow: none;
+  border-radius: 22px;
+}
+.card:hover{
+  border-color: rgba(255,255,255,.14);
+}
+
+/* 4) 图片更“高级”：轻微暗角 + 降低对比（避免像样板图） */
+.card .img{
+  height: 220px;
+  filter: saturate(1.0) contrast(1.0);
+}
+.card .shade{
+  background: linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.68) 100%);
+}
+
+/* 5) 文本层级更像官网：减少大白字压迫 */
+.card .body{
+  padding: 14px 16px 16px;
+}
+.kicker{
+  background: rgba(0,0,0,.16);
+  border-color: rgba(255,255,255,.10);
+  color: rgba(233,238,242,.82);
+}
+.card h4{
+  font-size: 17px;
+  letter-spacing: .05px;
+  margin: 10px 0 8px;
+}
+.card p{
+  color: rgba(233,238,242,.70);
+  font-size: 13.2px;
+  line-height: 1.6;
+  min-height: 0;                 /* 不强制占位，减少“列表感” */
+}
+
+/* 6) CTA 行更像“说明标签”，不要像按钮堆叠 */
+.cta .btn.primary{
+  background: transparent;
+  border-color: rgba(255,255,255,.12);
+}
+.cta .btn.primary:hover{
+  background: rgba(255,255,255,.04);
+}
+
+/* 7) 让“旁边还有更多卡片”的感觉更自然（像 IG） */
+.card{
+  min-width: 300px;              /* 稍小，让右边露出下一张 */
+  max-width: 320px;
+}
+@media (max-width: 520px){
+  .card{ min-width: 270px; max-width: 290px; }
+}
+
+/* 8) 底部提示区更干净（不要像系统提示条） */
+.nav-row{
+  background: transparent;
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding: 10px 16px 14px;
+}
+.nav-hint{
+  color: rgba(233,238,242,.55);
+  font-size: 12.3px;
+}
+.icon-btn{
+  border-color: rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+}
+.icon-btn:hover{
+  background: rgba(255,255,255,.05);
+}
