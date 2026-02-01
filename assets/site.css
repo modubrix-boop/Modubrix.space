@@ -380,3 +380,7 @@ a{color:inherit; text-decoration:none}
 .icon-btn:hover{
   background: rgba(255,255,255,.05);
 }
+/* Arrow clickability fix */
+.nav-row, .nav-arrows, .icon-btn { position: relative; z-index: 50; }
+.icon-btn { pointer-events: auto; }
+.cards-wrap, .cards { position: relative; z-index: 1; }
