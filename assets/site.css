@@ -1,40 +1,77 @@
-body {
-  margin: 0;
-  background: #0b0f12;
-  color: #e8edf2;
-  font-family: Arial, sans-serif;
+body{
+margin:0;
+background:#0b0f12;
+color:#e8edf2;
+font-family:Arial,sans-serif;
 }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 40px 20px;
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
 }
 
-h1,h2,h3 {
-  color: white;
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:24px;
 }
 
-a {
-  color: #9ad1ff;
+.brand{
+display:flex;
+gap:12px;
+align-items:center;
 }
 
-.card {
-  display: block;
-  background: #121821;
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 24px;
-  text-decoration: none;
-  color: white;
+.brand-badge{
+width:36px;
+height:36px;
+border-radius:10px;
+background:linear-gradient(135deg,#2aa7a1,#6ed7d2);
 }
 
-.card .img {
-  height: 260px;
-  background-size: cover;
-  background-position: center;
+.hero{
+background:#121821;
+padding:28px;
+border-radius:18px;
+margin-bottom:30px;
 }
 
-.card .body {
-  padding: 18px;
+.cards{
+display:flex;
+gap:20px;
+overflow-x:auto;
+}
+
+.card{
+min-width:260px;
+background:#121821;
+border-radius:18px;
+overflow:hidden;
+text-decoration:none;
+color:white;
+}
+
+.card .img{
+height:200px;
+background-size:cover;
+background-position:center;
+}
+
+.card .body{
+padding:14px;
+}
+
+.lang-btn{
+background:#222;
+color:white;
+border:1px solid #333;
+padding:8px 12px;
+border-radius:20px;
+cursor:pointer;
+}
+
+.lang-btn.active{
+background:#2aa7a1;
 }
